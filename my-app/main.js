@@ -8,7 +8,13 @@ import { toStringHDMS } from "ol/coordinate.js";
 import TileWMS from "ol/source/TileWMS";
 import axios from "axios";
 import ScaleLine from "ol/control/ScaleLine.js";
-
+import GeoJSON from "ol/format/GeoJSON.js";
+import Select from "ol/interaction/Select.js";
+import VectorLayer from "ol/layer/Vector.js";
+import VectorSource from "ol/source/Vector.js";
+import { Fill, Stroke, Style } from "ol/style.js";
+import { pointerMove } from "ol/events/condition.js";
+import {FullScreen, defaults as defaultControls} from 'ol/control.js';
 
 const layer = new TileLayer({
   source: new OSM(),
@@ -19,12 +25,17 @@ var wmsURL = "http://localhost:8080/geoserver/Overlay/wms";
 
 const wmsSource = new TileWMS({
   url: wmsURL,
+  extent: [-13884991, 2870341, -7455066, 6338219],
   params: {
     // 'FORMAT': format,
     VERSION: "1.1.0",
     STYLES: "",
     LAYERS: "Overlay:munic",
+    TILED: true,
   },
+  serverType: "geoserver",
+  // Countries have transparency, so do not fade tiles:
+  transition: 0,
   // crossOrigin: 'anonymous',
 });
 
@@ -32,12 +43,17 @@ const wmsSource = new TileWMS({
 
 const wmsSource2 = new TileWMS({
   url: wmsURL,
+  extent: [-13884991, 2870341, -7455066, 6338219],
   params: {
     // 'FORMAT': format,
     VERSION: "1.1.0",
     STYLES: "",
     LAYERS: "Overlay:georgia1",
+    TILED: true,
   },
+  serverType: "geoserver",
+  // Countries have transparency, so do not fade tiles:
+  transition: 0,
   // crossOrigin: 'anonymous',
 });
 
@@ -51,15 +67,38 @@ const wmsLayer2 = new TileLayer({
   // minZoom: 9.5,
 });
 
+const USLayer = new VectorLayer({
+  extent: [-13884991, 2870341, -7455066, 6338219],
+  source: new VectorSource({
+    format: new GeoJSON(),
+    // url: "https://ahocevar.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=topp:states&outputFormat=application/json",
+    // url:"http://localhost:8080/geoserver/Overlay/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Overlay%3Ageorgia1&maxFeatures=50&outputFormat=application%2Fjson",
+    url: "http://localhost:8080/geoserver/wfs?request=GetFeature&version=1.1.0&typeName=Overlay:georgia1&outputFormat=application/json",
+  }),
+  style: new Style({
+    fill: new Fill({
+      color: "transparent",
+    }),
+  }),
+});
+
 const view = new View({
   center: [44799999, 5172947],
   zoom: 8,
+
+  // center: [-10997148, 4569099],
+  // zoom: 4,
 });
 
 const map = new Map({
-  layers: [layer, wmsLayer, wmsLayer2],
+  layers: [layer, wmsLayer, wmsLayer2, USLayer],
   target: "map",
   view: view,
+  controls: defaultControls().extend([
+    new FullScreen({
+      source: 'fullscreen',
+    }),
+  ]),
 });
 
 const pos = fromLonLat([44.797886, 41.72947]);
@@ -89,7 +128,7 @@ map.on("click", function (evt) {
       .body.querySelector(".featureInfo");
     var arr = {};
     // console.log("node", node);
-    
+
     var objCells = node.rows.item(1).cells;
     // console.log("objCells", objCells);
     let titles = node.getElementsByTagName("th");
@@ -128,6 +167,17 @@ map.on("click", function (evt) {
     //   result = 11;
     // }
     // console.log(result, "result");
+
+    const regionDonwlaod = document.querySelectorAll(".region_download")
+
+    regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`
+    regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`
+    
+
+    // regionDonwlaod[1].href = `/regions/regions/${result}/dziritadi%20informacia/`
+
+    
+
 
     if (result && result > 0) {
       axios
@@ -176,3 +226,20 @@ var scale = new ScaleLine({
   steps: 4,
 });
 map.addControl(scale);
+
+
+//not working
+map.addInteraction(
+  new Select({
+    condition: pointerMove,
+    style: new Style({
+      fill: new Fill({
+        color: "transparent",
+      }),
+      stroke: new Stroke({
+        color: "yellow",
+        width: 2,
+      }),
+    }),
+  })
+);

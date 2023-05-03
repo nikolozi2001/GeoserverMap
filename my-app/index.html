@@ -13,16 +13,52 @@
 </head>
 
 <body>
-  <div id="map" class="map"></div>
-  <div style="display: none;">
-    <!-- Popup -->
-    <div id="popup"></div>
+  <div id="fullscreen" class="fullscreen">
+    <div id="map" class="map"></div>
+    <div style="display: none;">
+      <!-- Popup -->
+      <div id="popup"></div>
+    </div>
+    <div class="sidepanel">
+      <span class="sidepanel-title">რეგიონული სტატისტიკა</span>
+      <table class="machveneblebi-right">
+        <tbody>
+          <tr>
+            <th id="dziritadi1" title="" data-toggle="popover" data-placement="top"
+              data-trigger="hover" data-content="">
+              ძირითადი ინფორმაცია <span class="float-right"></span>
+            </th>
+          </tr>
+          <tr class="informacia1">
+            <td>
+              რეგიონის ფართობი
+            </td>
+            <td>
+              <span class="float-right"><a class="region_download"
+                  href="">
+                  <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia1">
+            <td>
+              მუნიციპალიტეტების, ქალაქების და სოფლების რაოდენობა
+            </td>
+            <td>
+              <span class="float-right"><a class="region_download"
+                  href="">
+                  <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
   <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script type="module" src="main.js"></script>
+  <script type="module" src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 

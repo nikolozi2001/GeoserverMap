@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
@@ -12,6 +12,285 @@ body{
     min-width: 595px;
 }
 
-.popover{
+.popover {
     --bs-popover-max-width: 595px;
+}
+
+.fullscreen:-webkit-full-screen {
+    height: 100%;
+    margin: 0;
+}
+
+.fullscreen:fullscreen {
+    height: 100%;
+}
+
+.fullscreen {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 400px;
+}
+
+.map .ol-rotate {
+    top: 3em;
+}
+
+.map {
+    width: 80%;
+    float: left;
+}
+
+.sidepanel {
+    background: #1f6b75;
+    width: 20%;
+    height: 100vh;
+    float: left;
+}
+
+.sidepanel-title {
+    width: 100%;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.6em;
+    color: #ffffff;
+    display: block;
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+.machveneblebi-right {
+    font-family: arial, sans-serif !important;
+    border-collapse: collapse !important;
+    margin-left: 25px;
+    margin-bottom: 92px;
+}
+
+.machveneblebi-right td,
+.machveneblebi-right th {
+    text-align: left !important;
+    padding: 8px !important;
+    /* border-bottom: 1px solid #ddd !important; */
+}
+
+.machveneblebi-right th {
+    font-weight: bolder;
+}
+
+#dziritadi1,
+#dziritadi2,
+#dziritadi3,
+#dziritadi4,
+#dziritadi5,
+#dziritadi6,
+#dziritadi7,
+#dziritadi8,
+#dziritadi9,
+#dziritadi10,
+#dziritadi11,
+#dziritadi12,
+#dziritadi13,
+#dziritadi14,
+#dziritadi15,
+#dziritadi16,
+#dziritadi17,
+#dziritadi18,
+#dziritadi19,
+#dziritadi20,
+#dziritadi21,
+#dziritadi22,
+#dziritadi31,
+#dziritadi32,
+#dziritadi33,
+#dziritadi34,
+#dziritadi35,
+#dziritadi36,
+#dziritadiMain,
+#dziritadiMain2 {
+    width: 330px;
+    font-weight: bolder;
+    background: url("https://cdn-icons-png.flaticon.com/512/32/32195.png") no-repeat;
+    background-size: 18px 18px !important;
+    background-position: 96% 50% !important;
+    cursor: pointer;
+    /* padding-right: 100px !important; */
+}
+#dziritadi {
+    font-weight: bolder;
+}
+
+.machveneblebi-left td:hover {
+    background-color: #f5f5f5;
+}
+
+.machveneblebi-left tr:nth-child(even) {
+    background-color: transparent !important;
+}
+
+.informacia,
+.informacia1,
+.informacia2,
+.informacia3,
+.informacia4,
+.informacia5,
+.informacia6,
+.informacia7,
+.informacia8,
+.informacia9,
+.informacia10,
+.informacia11,
+.informacia12,
+.informacia13,
+.informacia14,
+.informacia15,
+.informacia16,
+.informacia17,
+.informacia18,
+.informacia19,
+.informacia20,
+.informacia21,
+.informacia22,
+.informacia31,
+.informacia32,
+.informacia33,
+.informacia34,
+.informacia35,
+.informacia36,
+.informaciaMain {
+    display: none;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd !important;
+}
+
+.informacia:hover,
+.informacia1:hover,
+.informacia2:hover,
+.informacia3:hover,
+.informacia4:hover,
+.informacia5:hover,
+.informacia6:hover,
+.informacia7:hover,
+.informacia8:hover,
+.informacia9:hover,
+.informacia10:hover,
+.informacia11:hover,
+.informacia12:hover,
+.informacia13:hover,
+.informacia14:hover,
+.informacia15:hover,
+.informacia16:hover,
+.informacia17:hover,
+.informacia18:hover,
+.informacia19:hover,
+.informacia20:hover,
+.informacia21:hover,
+.informacia22:hover,
+.informacia31:hover,
+.informacia32:hover,
+.informacia33:hover,
+.informacia34:hover,
+.informacia35:hover,
+.informacia36:hover,
+#dziritadi1:hover,
+#dziritadi2:hover,
+#dziritadi3:hover,
+#dziritadi4:hover,
+#dziritadi5:hover,
+#dziritadi6:hover,
+#dziritadi7:hover,
+#dziritadi8:hover,
+#dziritadi9:hover,
+#dziritadi10:hover,
+#dziritadi11:hover,
+#dziritadi:hover,
+#dziritadi12:hover,
+#dziritadi13:hover,
+#dziritadi14:hover,
+#dziritadi15:hover,
+#dziritadi16:hover,
+#dziritadi17:hover,
+#dziritadi18:hover,
+#dziritadi19:hover,
+#dziritadi20:hover,
+#dziritadi21:hover,
+#dziritadi22:hover,
+#dziritadi31:hover,
+#dziritadi32:hover,
+#dziritadi33:hover,
+#dziritadi34:hover,
+#dziritadi35:hover,
+#dziritadi36:hover,
+#dziritadiMain:hover,
+#dziritadiMain2:hover {
+    background-color: #f5f5f5 !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+tr.informacia1:hover,
+tr.informacia2:hover,
+tr.informacia3:hover,
+tr.informacia4:hover,
+tr.informacia5:hover,
+tr.informacia6:hover,
+tr.informacia7:hover,
+tr.informacia8:hover,
+tr.informacia9:hover,
+tr.informacia10:hover,
+tr.informacia11:hover,
+tr.informacia:hover,
+tr.informacia12:hover,
+tr.informacia13:hover,
+tr.informacia14:hover,
+tr.informacia15:hover,
+tr.informacia16:hover,
+tr.informacia17:hover,
+tr.informacia18:hover,
+tr.informacia19:hover,
+tr.informacia20:hover,
+tr.informacia21:hover,
+tr.informacia22:hover,
+tr.informacia31:hover,
+tr.informacia32:hover,
+tr.informacia33:hover,
+tr.informacia34:hover,
+tr.informacia35:hover,
+tr.informacia36:hover,
+tr.informaciaMain:hover {
+    background-color: #f5f5f5 !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+tr.informacia1,
+tr.informacia2,
+tr.informacia3,
+tr.informacia4,
+tr.informacia5,
+tr.informacia6,
+tr.informacia7,
+tr.informacia8,
+tr.informacia9,
+tr.informacia10,
+tr.informacia11,
+tr.informacia,
+tr.informacia12,
+tr.informacia13,
+tr.informacia14,
+tr.informacia15,
+tr.informacia16,
+tr.informacia17,
+tr.informacia18,
+tr.informacia19,
+tr.informacia20,
+tr.informacia21,
+tr.informacia22,
+tr.informacia31,
+tr.informacia32,
+tr.informacia33,
+tr.informacia34,
+tr.informacia35,
+tr.informacia36,
+tr.informaciaMain {
+    border-bottom: 1px solid #ddd !important;
 }
