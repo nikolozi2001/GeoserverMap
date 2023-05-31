@@ -8,13 +8,7 @@ import { toStringHDMS } from "ol/coordinate.js";
 import TileWMS from "ol/source/TileWMS";
 import axios from "axios";
 import ScaleLine from "ol/control/ScaleLine.js";
-import GeoJSON from "ol/format/GeoJSON.js";
-import Select from "ol/interaction/Select.js";
-import VectorLayer from "ol/layer/Vector.js";
-import VectorSource from "ol/source/Vector.js";
-import { Fill, Stroke, Style } from "ol/style.js";
-import { pointerMove } from "ol/events/condition.js";
-import {FullScreen, defaults as defaultControls} from 'ol/control.js';
+import { FullScreen, defaults as defaultControls } from "ol/control.js";
 
 const layer = new TileLayer({
   source: new OSM(),
@@ -67,20 +61,6 @@ const wmsLayer2 = new TileLayer({
   // minZoom: 9.5,
 });
 
-const USLayer = new VectorLayer({
-  extent: [-13884991, 2870341, -7455066, 6338219],
-  source: new VectorSource({
-    format: new GeoJSON(),
-    // url: "https://ahocevar.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=topp:states&outputFormat=application/json",
-    // url:"http://localhost:8080/geoserver/Overlay/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Overlay%3Ageorgia1&maxFeatures=50&outputFormat=application%2Fjson",
-    url: "http://localhost:8080/geoserver/wfs?request=GetFeature&version=1.1.0&typeName=Overlay:georgia1&outputFormat=application/json",
-  }),
-  style: new Style({
-    fill: new Fill({
-      color: "transparent",
-    }),
-  }),
-});
 
 const view = new View({
   center: [44799999, 5172947],
@@ -91,12 +71,12 @@ const view = new View({
 });
 
 const map = new Map({
-  layers: [layer, wmsLayer, wmsLayer2, USLayer],
+  layers: [layer, wmsLayer, wmsLayer2],
   target: "map",
   view: view,
   controls: defaultControls().extend([
     new FullScreen({
-      source: 'fullscreen',
+      source: "fullscreen",
     }),
   ]),
 });
@@ -168,16 +148,12 @@ map.on("click", function (evt) {
     // }
     // console.log(result, "result");
 
-    const regionDonwlaod = document.querySelectorAll(".region_download")
+    const regionDonwlaod = document.querySelectorAll(".region_download");
 
-    regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`
-    regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`
-    
+    regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
+    regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
 
     // regionDonwlaod[1].href = `/regions/regions/${result}/dziritadi%20informacia/`
-
-    
-
 
     if (result && result > 0) {
       axios
@@ -194,11 +170,11 @@ map.on("click", function (evt) {
           }
           var content = null;
 
-          const data = regionClicked.Name
-          const sidetitle = document.getElementById('sidetitle');
+          const data = regionClicked.Name;
+          const sidetitle = document.getElementById("sidetitle");
           sidetitle.innerHTML = data;
 
-          let regionContent = `<p>დასახელება: ${regionClicked.Name}</p><p>ფართობი (კვ.კმ): ${regionClicked.Area}</p><p>მოსახლეობის რიცხოვნობა (ათასი): ${regionClicked.Population}</p><p>მთლიანი შიდა პროდუქტი (მლნ. ლარი): ${regionClicked.GDP}</p><p>მთლიანი შიდა პროდუქტი ერთ სულ მოსახლეზე (აშშ დოლარი): ${regionClicked.GDPPerCapita}</p><p>უმუშევრობის დონე (%): ${regionClicked.UnemploymentRate}</p><p>დასაქმებულთა რაოდენობა, სულ (ათასი კაცი): ${regionClicked.EmploymentRate}</p><p>დასაქმებულთა რაოდენობა - ბიზნეს სექტორში (ათასი კაცი):  ${regionClicked.EmploymentRateIndustry}</p><p>დასაქმებულთა საშუალოთვიური ხელფასი - ბიზნეს სექტორში (ლარი): ${regionClicked.AverageSalaryIndustry}</p><p>რეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${regionClicked.RegistredEntities}</p>
+          let regionContent = `<p>დასახელება: ${regionClicked.Name}</p><p>ფართობი (კვ.კმ): ${regionClicked.Area}</p><p>მოსახლეობის რიცხოვნობა (ათასი): ${regionClicked.Population}</p><p>ცოცხლად დაბადებულთა რიცხოვნობა (კაცი): ${regionClicked.liveBirth}</p><p>გარდაცვლილთა რიცხოვნობა (კაცი): ${regionClicked.death}</p><p>ბუნებრივი მატება (კაცი): ${regionClicked.naturalIncrease}</p><p>მთლიანი შიდა პროდუქტი (მლნ. ლარი): ${regionClicked.GDP}</p><p>მთლიანი შიდა პროდუქტი ერთ სულ მოსახლეზე (აშშ დოლარი): ${regionClicked.GDPPerCapita}</p><p>უმუშევრობის დონე (%): ${regionClicked.UnemploymentRate}</p><p>დასაქმებულთა რაოდენობა, სულ (ათასი კაცი): ${regionClicked.EmploymentRate}</p><p>დასაქმებულთა რაოდენობა - ბიზნეს სექტორში (ათასი კაცი):  ${regionClicked.EmploymentRateIndustry}</p><p>დასაქმებულთა საშუალოთვიური ხელფასი - ბიზნეს სექტორში (ლარი): ${regionClicked.AverageSalaryIndustry}</p><p>რეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${regionClicked.RegistredEntities}</p><p>მოქმედი ეკონომიკური სუბიექტების რაოდენობა (ერთეული): ${regionClicked.activeEntities}</p><p>ახლადრეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული): ${regionClicked.newlyRegistredEntities}</p>
             <code>`;
           ("</code>");
 
@@ -230,20 +206,3 @@ var scale = new ScaleLine({
   steps: 4,
 });
 map.addControl(scale);
-
-
-//not working
-map.addInteraction(
-  new Select({
-    condition: pointerMove,
-    style: new Style({
-      fill: new Fill({
-        color: "transparent",
-      }),
-      stroke: new Stroke({
-        color: "yellow",
-        width: 2,
-      }),
-    }),
-  })
-);
