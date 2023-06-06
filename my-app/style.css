@@ -294,3 +294,8 @@ tr.informacia36,
 tr.informaciaMain {
     border-bottom: 1px solid #ddd !important;
 }
+.popover-header:after {
+    content: "✖";
+    float: right;
+    cursor: pointer;
+}

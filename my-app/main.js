@@ -61,6 +61,14 @@ const wmsLayer2 = new TileLayer({
   // minZoom: 9.5,
 });
 
+const closer = document.getElementById('popup');
+
+closer.onclick = function () {
+  popup.setPosition(undefined);
+  closer.blur();
+  return false;
+};
+
 var view = null;
 console.log(window.innerWidth);
 
