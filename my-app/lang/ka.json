@@ -1,0 +1,17 @@
+{
+  "regions": {
+    "dziritadi": {
+      "title": "ძირითადი ინფორმაცია",
+      "fartobi": "მუნიციპალლიტეტის ფართობი",
+      "dasaxlebebi": "დასახ რაოდ"
+    }
+  },
+
+  "municipaliteti": {
+    "dziritadi": {
+      "title": "მუნი",
+      "fartobi": "მუნიციპალლიტეტის ფართობი",
+      "dasaxlebebi": "დასახ რაოდ"
+    }
+  }
+}

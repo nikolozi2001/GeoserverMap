@@ -1,0 +1,55 @@
+@media screen and (max-width: 900px) {
+    .sidepanel-title {
+        font-size: 1em;
+    }
+
+    .machveneblebi-right td,
+    .machveneblebi-right th {
+        font-size: 12px;
+        width: 60px;
+    }
+
+    .machveneblebi-right {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .popover-body {
+        min-width: 276px;
+        min-height: 350px;
+        font-size: 0.6em;
+        pointer-events: none;
+    }
+    .popover-body p {
+        margin-bottom: 3px;
+    }
+
+    .sidepanel {
+        width: 20%;
+    }
+    #dziritadi1 {
+        font-size: 0.6em;
+    }
+    .sidepanel-title,
+    .informacia1 {
+        font-size: 0.6em;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #dziritadi1 {
+        font-size: 0.5em;
+    }
+    .sidepanel-title,
+    .informacia1 {
+        font-size: 0.5em;
+    }
+
+    .machveneblebi-right td,
+    .machveneblebi-right th {
+        font-size: 0.5em;
+        width: 60px;
+    }
+}

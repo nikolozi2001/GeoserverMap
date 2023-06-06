@@ -61,14 +61,21 @@ const wmsLayer2 = new TileLayer({
   // minZoom: 9.5,
 });
 
+var view = null;
+console.log(window.innerWidth);
 
-const view = new View({
-  center: [44799999, 5172947],
-  zoom: 8,
-
-  // center: [-10997148, 4569099],
-  // zoom: 4,
-});
+// Check if the screen width is below a certain threshold
+if (window.innerWidth < 900) {
+  view = new View({
+    center: [44888888, 5172947],
+    zoom: 7,
+  });
+}else{
+  view = new View({
+    center: [44799999, 5172947],
+    zoom: 8,
+  });
+}
 
 const map = new Map({
   layers: [layer, wmsLayer, wmsLayer2],

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1 style="color: green">
+    GeeksforGeeks
+  </h1>
+
+  <p>
+    Click on the buttons below to change
+    the language of the webpage.
+  </p>
+
+  <!-- Define the buttons that will 
+  change the language of the page 
+  and reload it -->
+  <button onclick="changeLanguage('ka')">
+    ქართული
+  </button>
+  <button onclick="changeLanguage('en')">
+    English
+  </button>
+
+  <!-- Define the content of the page
+  that would be changed -->
+  <p id="siteContent">
+    რაღაც ტექსტი ქართულად დაწერილი
+  </p>
+
+
+  <script>
+    // Create a function to change
+    // the hash value of the page
+    function changeLanguage(lang) {
+      location.hash = lang;
+      location.reload();
+    }
+
+    // Define the language reload anchors
+    var language = {
+      ka: {
+        welcome: "რაღაც ტექსტი ქართულად დაწერილი"
+      },
+      en: {
+        welcome: "Somthing text writed by english"
+      }
+    };
+
+    // Check if a hash value exists in the URL
+    if (window.location.hash) {
+
+      // Set the content of the webpage 
+      // depending on the hash value
+      if (window.location.hash == "#ka") {
+        siteContent.textContent =
+          language.ka.welcome;
+      }else{
+        siteContent.textContent = language.en.welcome;
+      }
+    }
+  </script>
+</body>
+
+</html>

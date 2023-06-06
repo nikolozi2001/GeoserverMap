@@ -1,0 +1,17 @@
+{
+  "regions": {
+    "dziritadi": {
+      "title": "en",
+      "fartobi": "en",
+      "dasaxlebebi": "en"
+    }
+  },
+
+  "municipaliteti": {
+    "muni": {
+      "title": "en",
+      "fartobi": "en",
+      "dasaxlebebi": "en"
+    }
+  }
+}

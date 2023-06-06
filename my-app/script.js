@@ -1,8 +1,6 @@
 let itemsToShow = {
-    dziritadi1: "informacia1",
-
-
-  };
+  dziritadi1: "informacia1",
+};
 
 let element = document.getElementById("dziritadi1");
 element.addEventListener("click", function (event) {
@@ -32,7 +30,6 @@ element.addEventListener("click", function (event) {
       }
     }
   }
-
 });
 
 
