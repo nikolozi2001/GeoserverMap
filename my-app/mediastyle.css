@@ -53,3 +53,9 @@
         width: 60px;
     }
 }
+
+@media screen and (min-width: 500px) {
+    #burger__btn {
+        display: none;
+    }
+}

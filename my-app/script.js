@@ -32,4 +32,24 @@ element.addEventListener("click", function (event) {
   }
 });
 
+const sidepanel = document.getElementById("sidepanel");
+const burgerBtn = document.getElementById("burger__btn");
+const map = document.getElementById("map");
+const burgerImg =
+  '<img src="images/hamburger.png" alt="burgerIcon" style="width: 15px;">';
+const burgerClose =
+  '<img src="images/close.png" alt="burgerIcon" style="width: 15px;">';
 
+burgerBtn.addEventListener("click", () => {
+  if (sidepanel.style.display === "none") {
+    sidepanel.style.display = "block";
+    burgerBtn.innerHTML = burgerClose;
+    map.style.width = "80%";
+    burgerBtn.style.right = "23%";
+  } else {
+    sidepanel.style.display = "none";
+    burgerBtn.innerHTML = burgerImg;
+    burgerBtn.style.right = "4%";
+    map.style.width = "100%";
+  }
+});

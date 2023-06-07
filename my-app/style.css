@@ -299,3 +299,10 @@ tr.informaciaMain {
     float: right;
     cursor: pointer;
 }
+
+#burger__btn{
+    border: none;
+    position: absolute;
+    top: 50px;
+    right: 23%;
+}
