@@ -21,18 +21,23 @@
       <div id="popup"></div>
     </div>
     <button id="burger__btn"><img src="images/close.png" alt="burgerIcon" style="width: 15px;"></button>
+
     <div id="sidepanel" class="sidepanel">
-      <span id="sidetitle" class="sidepanel-title">სტატისტიკა</span>
+      <div id="forLang">
+        <span id="sidetitle" class="sidepanel-title">სტატისტიკა</span>
+        <img src="images/langIcon.svg" alt="langChange" id="lang" />
+      </div>
+
       <table class="machveneblebi-right">
-        <tbody>
-          <tr>
-            <th id="dziritadi1" title="" data-toggle="popover" data-placement="top" data-trigger="hover"
-              data-content="">
+        <tbody id="parent_main">
+          <!-- <tr>
+            <th class="click__item" id="dziritadi1" title="" data-toggle="popover" data-placement="top"
+              data-trigger="hover" data-content="">
               ძირითადი ინფორმაცია <span class="float-right"></span>
             </th>
           </tr>
           <tr class="informacia1">
-            <td>
+            <td id="info1">
               რეგიონის ფართობი
             </td>
             <td>
@@ -41,14 +46,222 @@
             </td>
           </tr>
           <tr class="informacia1">
-            <td>
+            <td id="info2">
               მუნიციპალიტეტების, ქალაქების და სოფლების რაოდენობა
             </td>
             <td>
               <span class="float-right"><a class="region_download" href="">
                   <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
+          </tr> -->
+          <!-- <tr>
+            <th class="click__item" id="dziritadi2" title="" data-toggle="popover" data-placement="top"
+              data-trigger="hover" data-content="">
+              მოსახლეობა <span class="float-right"></span>
+            </th>
           </tr>
+          <tr class="informacia2">
+            <td id="info3">
+              მოსახლეობის რიცხოვნობა საქალაქო-სასოფლო დასახლებების მიხედვით 1 იანვრის მდგომარეობით
+            </td>
+            <td>
+              <span class="float-right"><a class="region_download" href="">
+                  <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia2">
+            <td id="info4">
+              საქალაქო დასახლებაში მცხოვრები მოსახლეობის წილი მუნიციპალიტეტის მთლიან მოსახლეობაში (%)
+            </td>
+            <td>
+              <span class="float-right"><a class="region_download" href="">
+                  <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia2">
+            <td id="info5">
+              მოსახლეობის სიმჭიდროვე 1 კვ.კმ-ზე
+            </td>
+            <td>
+              <span class="float-right"><a class="region_download" href="">
+                  <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr>
+            <td id="dziritadiMain" class="demografiaShow" title="" data-toggle="popover" data-placement="top"
+              data-trigger="hover" data-content="">დემოგრაფია</td>
+          </tr>
+          <style>
+            #dziritadi3,
+            #dziritadi4,
+            #dziritadi5,
+            #dziritadi6,
+            #dziritadi7 {
+              display: none;
+              margin-left: 20px;
+            }
+          </style>
+          <tr>
+            <td id="dziritadi3" title="" data-toggle="popover" data-placement="top" data-trigger="hover"
+              data-content="">დაბადება</td>
+          </tr>
+          <tr class="informacia3">
+            <td id="info6">
+              ცოცხლად დაბადებულთა რიცხოვნობა
+            </td>
+            <td>
+              <span class="float-right"><a href=""> <img src="images/excel-9-24.png" alt="exel" width="25" height="25">
+                </a></span>
+            </td>
+          </tr>
+          <tr class="informacia3">
+            <td id="info7">
+              შობადობის ზოგადი კოეფიციენტი (მოსახლეობის 1 000 კაცზე)
+            </td>
+            <td>
+              <span class="float-right"><a href=""> <img src="images/excel-9-24.png" alt="exel" width="25" height="25">
+                </a></span>
+            </td>
+          </tr>
+          <tr class="informacia3">
+            <td id="info8">
+              ცოცხლად დაბადებულთა რიცხოვნობა სქესის მიხედვით
+            </td>
+            <td>
+              <span class="float-right"><a href=""> <img src="images/excel-9-24.png" alt="exel" width="25" height="25">
+                </a></span>
+            </td>
+          </tr>
+          <tr class="informacia3">
+            <td id="info9">
+              სქესთა რაოდენობრივი თანაფარდობა დაბადებისას
+            </td>
+            <td>
+              <span class="float-right"><a href=""> <img src="images/excel-9-24.png" alt="exel" width="25" height="25">
+                </a></span>
+            </td>
+          </tr>
+          <tr class="informacia3">
+            <td id="info10">
+              დედის საშუალო ასაკი ბავშვის დაბადებისას
+            </td>
+            <td>
+              <span class="float-right"><a href=""> <img src="images/excel-9-24.png" alt="exel" width="25" height="25">
+                </a></span>
+            </td>
+          </tr>
+          <tr class="informacia3">
+            <td id="info11">
+              მკვდრადშობილთა რიცხოვნობა საქალაქო-სასოფლო დასახლებების მიხედვით
+            </td>
+            <td>
+              <span class="float-right"><a href=""> <img src="images/excel-9-24.png" alt="exel" width="25" height="25">
+                </a></span>
+            </td>
+          </tr>
+          <tr>
+            <td id="dziritadi4" onclick="GetIdChange()" title="" data-toggle="popover" data-placement="top"
+              data-trigger="hover" data-content="">
+              გარდაცვალება
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              გარდაცვლილთა რიცხოვნობა
+            </td>
+            <td>
+              <span class="float-right"><a href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              მოკვდაობის ზოგადი კოეფიციენტი (მოსახლეობის 1 000 კაცზე)
+            </td>
+            <td>
+              <span class="float-right"><a href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              გარდაცვლილთა რიცხოვნობა ასაკის და სქესის მიხედვით
+            </td>
+            <td>
+              <span class="float-right"><a href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              ჩვილ ბავშვთა მოკვდაობის კოეფიციენტი (1 000 ცოცხლად დაბადებულზე)
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              5 წლამდე ასაკის ბავშვთა მოკვდაობის კოეფიციენტი (1 000 ცოცხლად დაბადებულზე)
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              გარდაცვლილთა რიცხოვნობა სქესის და გარდაცვალების მიზეზების ძირითადი კლასების მიხედვით
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              გარდაცვლილთა რიცხოვნობა საქალაქო-სასოფლო დასახლებების და გარდაცვალების მიზეზების ძირითადი კლასების მიხედვით
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              გარდაცვლილთა რიცხოვნობა ასაკის და გარდაცვალების მიზეზების ძირითადი კლასების მიხედვით
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              თვითმკვლელობით გარდაცვლილთა რიცხოვნობა
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr>
+          <tr class="informacia4">
+            <td>
+              თვითმკვლელობის დონე (მოსახლეობის 100 000 კაცზე)
+            </td>
+            <td>
+              <span class="float-right"><a
+                  href="">
+                  <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
+            </td>
+          </tr> -->
         </tbody>
       </table>
     </div>

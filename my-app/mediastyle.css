@@ -12,6 +12,9 @@
     .machveneblebi-right {
         margin-left: 0;
     }
+    #forLang {
+        padding: 0px 5%;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -35,6 +38,16 @@
     .informacia1 {
         font-size: 0.6em;
         flex-direction: column;
+    }
+
+    #forLang {
+        display: flex;
+        flex-direction: column;
+        padding: unset;
+        align-items: center;
+    }
+    #lang {
+        width: 30%;
     }
 }
 

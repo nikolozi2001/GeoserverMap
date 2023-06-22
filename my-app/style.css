@@ -57,6 +57,15 @@ body {
     text-align: center;
 }
 
+#lang {
+    cursor: pointer;
+}
+
+#forLang {
+    display: flex;
+    padding: 0 17%;
+}
+
 .float-right {
     float: right;
 }
@@ -300,7 +309,7 @@ tr.informaciaMain {
     cursor: pointer;
 }
 
-#burger__btn{
+#burger__btn {
     border: none;
     position: absolute;
     top: 50px;

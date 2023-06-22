@@ -10,6 +10,8 @@ import axios from "axios";
 import ScaleLine from "ol/control/ScaleLine.js";
 import { FullScreen, defaults as defaultControls } from "ol/control.js";
 
+
+
 const layer = new TileLayer({
   source: new OSM(),
 });
@@ -61,7 +63,7 @@ const wmsLayer2 = new TileLayer({
   // minZoom: 9.5,
 });
 
-const closer = document.getElementById('popup');
+const closer = document.getElementById("popup");
 
 closer.onclick = function () {
   popup.setPosition(undefined);
@@ -70,7 +72,7 @@ closer.onclick = function () {
 };
 
 var view = null;
-console.log(window.innerWidth);
+// console.log(window.innerWidth);
 
 // Check if the screen width is below a certain threshold
 if (window.innerWidth < 900) {
@@ -78,7 +80,7 @@ if (window.innerWidth < 900) {
     center: [44888888, 5172947],
     zoom: 7,
   });
-}else{
+} else {
   view = new View({
     center: [44799999, 5172947],
     zoom: 8,
@@ -163,10 +165,13 @@ map.on("click", function (evt) {
     // }
     // console.log(result, "result");
 
-    const regionDonwlaod = document.querySelectorAll(".region_download");
+    // const regionDonwlaod = document.querySelectorAll(".region_download");
 
-    regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
-    regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
+    // regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
+    // regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
+    // regionDonwlaod[2].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20რიცხოვნობა.xlsx`;
+    // regionDonwlaod[3].href = `/regions/${result}/mosakhleoba/საქალაქო%20დასახლებაში%20მცხოვრები.xlsx`;
+    // regionDonwlaod[4].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20სიმჭიდროვე.xlsx`;
 
     // regionDonwlaod[1].href = `/regions/regions/${result}/dziritadi%20informacia/`
 

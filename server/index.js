@@ -30,6 +30,25 @@ con.connect(function (err) {
       }
     );
   });
+
+  app.get("/regions", (req, res) => {
+  
+    let lang = req.query.lang
+    console.log(lang)
+    if (err) throw err;
+    con.query(
+      `SELECT * FROM ${
+        lang === "ka" ? "regional_statistics" : "regional_statistics_en"
+      }`,
+      function (err, result) {
+        if (err) throw err;
+        else {
+          console.log(result);
+          res.send(result);
+        }
+      }
+    );
+  });
 });
 
 app.get("/", (req, res) => {
