@@ -19,10 +19,14 @@ body {
 .fullscreen:-webkit-full-screen {
     height: 100%;
     margin: 0;
+    overflow:auto;
+
 }
 
 .fullscreen:fullscreen {
     height: 100%;
+    overflow:auto;
+
 }
 
 .fullscreen {
@@ -43,7 +47,7 @@ body {
 .sidepanel {
     background: #1f6b75;
     width: 20%;
-    height: 100vh;
+    min-height: 100vh;
     float: left;
 }
 

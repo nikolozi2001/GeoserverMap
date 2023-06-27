@@ -30,7 +30,7 @@
 
       <table class="machveneblebi-right">
         <tbody id="parent_main">
-          <!-- <tr>
+          <tr>
             <th class="click__item" id="dziritadi1" title="" data-toggle="popover" data-placement="top"
               data-trigger="hover" data-content="">
               ძირითადი ინფორმაცია <span class="float-right"></span>
@@ -53,8 +53,8 @@
               <span class="float-right"><a class="region_download" href="">
                   <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
-          </tr> -->
-          <!-- <tr>
+          </tr>
+          <tr>
             <th class="click__item" id="dziritadi2" title="" data-toggle="popover" data-placement="top"
               data-trigger="hover" data-content="">
               მოსახლეობა <span class="float-right"></span>
@@ -88,7 +88,7 @@
             </td>
           </tr>
           <tr>
-            <td id="dziritadiMain" class="demografiaShow" title="" data-toggle="popover" data-placement="top"
+            <td id="dziritadiMain"  class="demografiaShow" title="" data-toggle="popover" data-placement="top"
               data-trigger="hover" data-content="">დემოგრაფია</td>
           </tr>
           <style>
@@ -102,10 +102,10 @@
             }
           </style>
           <tr>
-            <td id="dziritadi3" title="" data-toggle="popover" data-placement="top" data-trigger="hover"
+            <td id="dziritadi3"  title="" data-toggle="popover" data-placement="top" data-trigger="hover"
               data-content="">დაბადება</td>
           </tr>
-          <tr class="informacia3">
+          <tr class="informacia3" id="informacia3">
             <td id="info6">
               ცოცხლად დაბადებულთა რიცხოვნობა
             </td>
@@ -160,8 +160,8 @@
             </td>
           </tr>
           <tr>
-            <td id="dziritadi4" onclick="GetIdChange()" title="" data-toggle="popover" data-placement="top"
-              data-trigger="hover" data-content="">
+            <td id="dziritadi4" title="" data-toggle="popover" data-placement="top" data-trigger="hover"
+              data-content="">
               გარდაცვალება
             </td>
           </tr>
@@ -197,8 +197,7 @@
               ჩვილ ბავშვთა მოკვდაობის კოეფიციენტი (1 000 ცოცხლად დაბადებულზე)
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
           </tr>
@@ -207,8 +206,7 @@
               5 წლამდე ასაკის ბავშვთა მოკვდაობის კოეფიციენტი (1 000 ცოცხლად დაბადებულზე)
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
           </tr>
@@ -217,18 +215,17 @@
               გარდაცვლილთა რიცხოვნობა სქესის და გარდაცვალების მიზეზების ძირითადი კლასების მიხედვით
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
           </tr>
           <tr class="informacia4">
             <td>
-              გარდაცვლილთა რიცხოვნობა საქალაქო-სასოფლო დასახლებების და გარდაცვალების მიზეზების ძირითადი კლასების მიხედვით
+              გარდაცვლილთა რიცხოვნობა საქალაქო-სასოფლო დასახლებების და გარდაცვალების მიზეზების ძირითადი კლასების
+              მიხედვით
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
           </tr>
@@ -237,8 +234,7 @@
               გარდაცვლილთა რიცხოვნობა ასაკის და გარდაცვალების მიზეზების ძირითადი კლასების მიხედვით
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
           </tr>
@@ -247,8 +243,7 @@
               თვითმკვლელობით გარდაცვლილთა რიცხოვნობა
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
           </tr>
@@ -257,15 +252,16 @@
               თვითმკვლელობის დონე (მოსახლეობის 100 000 კაცზე)
             </td>
             <td>
-              <span class="float-right"><a
-                  href="">
+              <span class="float-right"><a href="">
                   <img src="images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
             </td>
-          </tr> -->
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
   <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

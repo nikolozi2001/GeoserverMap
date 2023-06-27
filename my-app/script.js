@@ -86,20 +86,55 @@ burgerBtn.addEventListener("click", () => {
   }
 });
 
-const demografiaShow = document.getElementsByClassName("demografiaShow");
-// console.log(demografiaShow);
-
-for (let i = 0; i < demografiaShow.length; i++) {
-  demografiaShow[i].addEventListener("click", () => {
-    for (let j = 3; j < 9; j++) {
-      const x = document.getElementById(`dziritadi${j}`);
-      if (x.style.display === "block") {
-        x.style.display = "none";
-      } else {
-        x.style.display = "block";
+document.addEventListener("DOMContentLoaded", () => {
+  const demografiaShow = document.getElementsByClassName("demografiaShow");
+  for (let i = 0; i < demografiaShow.length; i++) {
+    demografiaShow[i].addEventListener("click", () => {
+      for (let j = 3; j < 9; j++) {
+        const x = document.getElementById(`dziritadi${j}`);
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
       }
+    });
+  }
+});
+
+
+const demographchildItem = document.getElementById("dziritadi3");
+demographchildItem.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia3");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "block") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "block";
     }
-  });
+    
+  }
+});
+
+const demographchildItem4 = document.getElementById("dziritadi4");
+demographchildItem4.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia4");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "block") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "block";
+    }
+    
+  }
+});
+
+
+
+function getIdChange() {
+  console.log("rame");
 }
 
 let language = "ka";
@@ -126,69 +161,86 @@ function fetchData(lang) {
 
 const main = document.getElementById("parent_main");
 
-function updateTexts(data) {
-  main.innerHTML = "";
-  let counter = 1;
-  Object.entries(data[0]).map(([key, value]) => {
-    console.log(data[1].basicInformation);
-    if (value !== 1) {
-      main.insertAdjacentHTML(
-        "beforeend",
-        `
-      <tr>
-        <th class="click__item" id=dziritadi${counter} title="" data-toggle="popover" data-placement="top"
-          data-trigger="hover" data-content="">
-          ${value} <span class="float-right"></span>
-          
-        </th>
-      </tr>
-      <tr class="informacia${counter}">
-      <td>
-        ${data[1].basicInformation}
-      </td>
-      <td>
-        <span class="float-right"><a class="region_download" href="">
-            <img src="../images/excel-9-24.png" alt="exel" width="25" height="25"> </a></span>
-      </td>
-      </tr>
-  `
-      );
-      counter++;
+let data; // Declare the data variable in a higher scope
+let dziri1tadi;
+let info1macia;
+let info2macia;
+let dziri2tadi;
+let info3macia;
+let info4macia;
+let info5macia;
+let dziri3tadi;
+
+async function updateTexts(data) {
+  await data;
+  dziri1tadi = data[0].basicInformation;
+  info1macia = data[1].basicInformation;
+  info2macia = data[2].basicInformation;
+  dziri2tadi = data[0].population;
+  info3macia = data[1].population;
+  info4macia = data[2].population;
+  info5macia = data[3].population;
+  dziri3tadi = data[0].birth;
+
+  dziritadi1.innerHTML = dziri1tadi;
+  info1.innerHTML = info1macia;
+  info2.innerHTML = info2macia;
+  dziritadi2.innerHTML = dziri2tadi;
+  info3.innerHTML = info3macia;
+  info4.innerHTML = info4macia;
+  info5.innerHTML = info5macia;
+  dziritadi3.innerHTML = dziri3tadi;
+
+  // Rest of the code...
+}
+
+function fetchDataAndInitialize(callback) {
+  fetchData("ka", (fetchedData) => {
+    data = fetchedData;
+    if (typeof callback === "function") {
+      callback();
     }
   });
 }
 
-fetchData("ka");
+fetchDataAndInitialize(updateTexts);
+
 lang.addEventListener("click", () => {
   if (language === "ka") {
     language = "en";
-    fetchData(language);
-    sessionStorage.setItem("lang", language);
-    sidetitle.innerHTML = "Statistic"
+    fetchData(language, (fetchedData) => {
+      data = fetchedData;
+      updateTexts();
+    });
+    sidetitle.innerHTML = "Statistic";
+    // dziritadi1.innerHTML = dziri1tadi;
+    // info1.innerHTML = info1macia;
+    // info2.innerHTML = info2macia;
+    // dziritadi2.innerHTML = dziri2tadi;
+    // info3.innerHTML = info3macia;
+    // info4.innerHTML = info4macia;
+    // info5.innerHTML = info5macia;
+    dziritadiMain.innerHTML = "Demography";
+    // dziritadi3.innerHTML = dziri3tadi;
 
-    // dziritadi1.innerHTML = "Main Information";
-    // info1.innerHTML = "Municipality area";
-    // info2.innerHTML = "Number of settlements";
-    // dziritadi2.innerHTML = "Population";
-    // info3.innerHTML =
-    //   "Number of population by urban-rural settlements as of 1 January";
-    // info4.innerHTML =
-    //   "Share of urban population in total population of the municipality (%)";
-    // info5.innerHTML = "Density of population per 1 sq. km";
+    // Rest of the code...
   } else {
     language = "ka";
-    fetchData(language);
-    sessionStorage.setItem("lang", language);
-    sidetitle.innerHTML = "სტატისტიკა"
-    // dziritadi1.innerHTML = "ძირითადი ინფორმაცია";
-    // info1.innerHTML = "რეგიონის ფართობი";
-    // info2.innerHTML = "მუნიციპალიტეტების, ქალაქების და სოფლების რაოდენობა";
-    // dziritadi2.innerHTML = "მოსახლეობა";
-    // info3.innerHTML =
-    //   "მოსახლეობის რიცხოვნობა საქალაქო-სასოფლო დასახლებების მიხედვით 1 იანვრის მდგომარეობით";
-    // info4.innerHTML =
-    //   "საქალაქო დასახლებაში მცხოვრები მოსახლეობის წილი მუნიციპალიტეტის მთლიან მოსახლეობაში (%)";
-    // info5.innerHTML = "მოსახლეობის სიმჭიდროვე 1 კვ.კმ-ზე";
+    fetchData(language, (fetchedData) => {
+      data = fetchedData;
+      updateTexts();
+    });
+    sidetitle.innerHTML = "სტატისტიკა";
+    // dziritadi1.innerHTML = dziri1tadi;
+    // info1.innerHTML = info1macia;
+    // info2.innerHTML = info2macia;
+    // dziritadi2.innerHTML = dziri2tadi;
+    // info3.innerHTML = info3macia;
+    // info4.innerHTML = info4macia;
+    // info5.innerHTML = info5macia;
+    dziritadiMain.innerHTML = "დემოგრაფია";
+    // dziritadi3.innerHTML = dziri3tadi;
+
+    // Rest of the code...
   }
 });
-
