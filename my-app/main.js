@@ -165,6 +165,19 @@ map.on("click", function (evt) {
     // }
     // console.log(result, "result");
 
+    const regionView = document.getElementById("parent_main");
+    // const municipalView = document.getElementById("parent_main2");
+    
+    if (viewResolution > 192.6092418558059) {
+      regionView.style.display = "block";
+      // municipalView.style.display = "none";
+    } else {
+      regionView.style.display = "none";
+      // municipalView.style.display = "block";
+    }
+    
+
+
     const regionDonwlaod = document.querySelectorAll(".region_download");
 
     regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
