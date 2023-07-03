@@ -214,6 +214,7 @@ body {
 .informacia35,
 .informacia36,
 .informaciaMain {
+    width: 330px;
     display: none;
     justify-content: space-between;
     align-items: center;

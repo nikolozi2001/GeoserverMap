@@ -10,8 +10,6 @@ import axios from "axios";
 import ScaleLine from "ol/control/ScaleLine.js";
 import { FullScreen, defaults as defaultControls } from "ol/control.js";
 
-
-
 const layer = new TileLayer({
   source: new OSM(),
 });
@@ -167,7 +165,7 @@ map.on("click", function (evt) {
 
     const regionView = document.getElementById("parent_main");
     // const municipalView = document.getElementById("parent_main2");
-    
+
     if (viewResolution > 192.6092418558059) {
       regionView.style.display = "block";
       // municipalView.style.display = "none";
@@ -175,18 +173,38 @@ map.on("click", function (evt) {
       regionView.style.display = "none";
       // municipalView.style.display = "block";
     }
-    
 
-
-    const regionDonwlaod = document.querySelectorAll(".region_download");
-
-    regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
-    regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
-    regionDonwlaod[2].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20რიცხოვნობა.xlsx`;
-    regionDonwlaod[3].href = `/regions/${result}/mosakhleoba/საქალაქო%20დასახლებაში%20მცხოვრები.xlsx`;
-    regionDonwlaod[4].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20სიმჭიდროვე.xlsx`;
+    // regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
+    // regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
+    // regionDonwlaod[2].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20რიცხოვნობა.xlsx`;
+    // regionDonwlaod[3].href = `/regions/${result}/mosakhleoba/საქალაქო%20დასახლებაში%20მცხოვრები.xlsx`;
+    // regionDonwlaod[4].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20სიმჭიდროვე.xlsx`;
 
     // regionDonwlaod[1].href = `/regions/regions/${result}/dziritadi%20informacia/`
+
+    let lang1 = sessionStorage.getItem("lang1");
+    const regionDonwlaod = document.querySelectorAll(".region_download");
+    regionDonwlaod.forEach((item) => {
+      item.addEventListener("click", (event) => {
+        if (result) {
+          lang1 = sessionStorage.getItem("lang1");
+          // console.log(lang1);
+          if (lang1 === "en") {
+            regionDonwlaod[0].href = `/regionseng/${result}/main%20information/area.xlsx`;
+            regionDonwlaod[1].href = `/regionseng/${result}/main%20information/number%20of%20settlements.xlsx`;
+            regionDonwlaod[2].href = `/regionseng/${result}/population/population_count.xlsx`;
+            regionDonwlaod[3].href = `/regionseng/${result}/population/residents_in_urban_settlements.xlsx`;
+            regionDonwlaod[4].href = `/regionseng/${result}/population/population_density.xlsx`;
+          } else {
+            regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
+            regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
+            regionDonwlaod[2].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20რიცხოვნობა.xlsx`;
+            regionDonwlaod[3].href = `/regions/${result}/mosakhleoba/საქალაქო%20დასახლებაში%20მცხოვრები.xlsx`;
+            regionDonwlaod[4].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20სიმჭიდროვე.xlsx`;
+          }
+        }
+      });
+    });
 
     if (result && result > 0) {
       axios
@@ -203,16 +221,41 @@ map.on("click", function (evt) {
           }
           var content = null;
 
-          const data = regionClicked.Name;
+          let data;
           const sidetitle = document.getElementById("sidetitle");
+
+          if (lang1 === "en") {
+            data = regionClicked.NameEN;
+          } else {
+            data = regionClicked.Name;
+          }
+
           sidetitle.innerHTML = data;
+          let regionContent;
+          let municipalContent;
+          let popoverTitle;
+          if (lang1 === "en") {
+            popoverTitle = "Key indicators";
+            data = regionClicked.NameEN;
 
-          let regionContent = `<p>დასახელება: ${regionClicked.Name}</p><p>ფართობი (კვ.კმ): ${regionClicked.Area}</p><p>მოსახლეობის რიცხოვნობა (ათასი): ${regionClicked.Population}</p><p>ცოცხლად დაბადებულთა რიცხოვნობა (კაცი): ${regionClicked.LiveBirths}</p><p>გარდაცვლილთა რიცხოვნობა (კაცი): ${regionClicked.Dead}</p><p>ბუნებრივი მატება (კაცი): ${regionClicked.naturalIncrease}</p><p>მთლიანი შიდა პროდუქტი (მლნ. ლარი): ${regionClicked.GDP}</p><p>მთლიანი შიდა პროდუქტი ერთ სულ მოსახლეზე (აშშ დოლარი): ${regionClicked.GDPPerCapita}</p><p>უმუშევრობის დონე (%): ${regionClicked.UnemploymentRate}</p><p>დასაქმებულთა რაოდენობა, სულ (ათასი კაცი): ${regionClicked.EmploymentRate}</p><p>დასაქმებულთა რაოდენობა - ბიზნეს სექტორში (ათასი კაცი):  ${regionClicked.EmploymentRateIndustry}</p><p>დასაქმებულთა საშუალოთვიური ხელფასი - ბიზნეს სექტორში (ლარი): ${regionClicked.AverageSalaryIndustry}</p><p>რეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${regionClicked.RegistredEntities}</p><p>მოქმედი ეკონომიკური სუბიექტების რაოდენობა (ერთეული): ${regionClicked.activeEntities}</p><p>ახლადრეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული): ${regionClicked.newlyRegistredEntities}</p>
+            regionContent = `<p>Name: ${regionClicked.NameEN}</p><p>Area (sq. km): ${regionClicked.Area}</p><p>Number of population (thousands): ${regionClicked.Population}</p><p>Number of live births (persons): ${regionClicked.LiveBirths}</p><p>Number of deaths (persons): ${regionClicked.Dead}</p><p>Natural Increase (persons): ${regionClicked.naturalIncrease}</p><p>Gross domestic product (million GEL): ${regionClicked.GDP}</p><p>Gross domestic product per capita (USD): ${regionClicked.GDPPerCapita}</p><p>Unemployment rate (%): ${regionClicked.UnemploymentRate}</p><p>Number of employees, total (thousands of people): ${regionClicked.EmploymentRate}</p><p>Number of employees - in the business sector (thousands of people):  ${regionClicked.EmploymentRateIndustry}</p><p>Average monthly salary of employees - in the business sector (GEL): ${regionClicked.AverageSalaryIndustry}</p><p>Number of registered economic entities (unit):  ${regionClicked.RegistredEntities}</p><p>Number of active economic entities (units): ${regionClicked.activeEntities}</p><p>Number of newly registered economic entities (units): ${regionClicked.newlyRegistredEntities}</p>
             <code>`;
-          ("</code>");
+            ("</code>");
 
-          let municipalContent = `<p>დასახელება: ${municipalClicked.Name}</p><p>ფართობი (კვ.კმ): ${municipalClicked.Area}</p><p>ქალაქების და დაბების რაოდენობა (ერთეული): ${municipalClicked.NumberOfCT}</p><p>სოფლების რაოდენობა (ერთეული): ${municipalClicked.Villages}</p><p>მოსახლეობის რიცხოვნობა (ათასი): ${municipalClicked.Population}</p><p>ცოცხლად დაბადებულთა რიცხოვნობა (კაცი): ${municipalClicked.LiveBirths}</p><p>შობადობის ზოგადი კოეფიციენტი (მოსახლეობის 1 000 კაცზე): ${municipalClicked.GeneralBirthRate}</p><p>გარდაცვლილთა რიცხოვნობა (კაცი): ${municipalClicked.Dead}</p><p>მოკვდაობის ზოგადი კოეფიციენტი (მოსახლეობის 1 000 კაცზე): ${municipalClicked.GeneralMortalityRate}</p><p>ბუნებრივი მატება (კაცი): ${municipalClicked.naturalIncrease}</p><p>დასაქმებულთა რაოდენობა-ბიზნეს სექტორში (ათასი კაცი):  ${municipalClicked.Employees}</p><p>დასაქმებულთა საშუალოთვიური ხელფასი-ბიზნეს სექტორში (ლარი):  ${municipalClicked.AVGSalary}</p><p>რეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${municipalClicked.RegEcSub}</p><p>მოქმედი ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${municipalClicked.ActEcSub}</p><p>ახლადრეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${municipalClicked.newlyRegistredEntities}</p>
+            municipalContent = `<p>Name: ${municipalClicked.NameEN}</p><p>Area (sq. km): ${municipalClicked.Area}</p><p>Number of cities and boroughs (units): ${municipalClicked.NumberOfCT}</p><p>Number of villages (units): ${municipalClicked.Villages}</p><p>Number of Population (thousands): ${municipalClicked.Population}</p><p>Number of live births (persons): ${municipalClicked.LiveBirths}</p><p>Crude birth rate (per 1 000 population): ${municipalClicked.GeneralBirthRate}</p><p>Number of deaths (persons): ${municipalClicked.Dead}</p><p>Crude death rate (per 1 000 population): ${municipalClicked.GeneralMortalityRate}</p><p>Natural Increase (persons): ${municipalClicked.naturalIncrease}</p><p>Employment Level in Business Sector (thousand persons):  ${municipalClicked.Employees}</p><p>Average monthly remuneration of employed persons-in Business Sector (GEL):  ${municipalClicked.AVGSalary}</p><p>The Number of Registered Business Entities (units):  ${municipalClicked.RegEcSub}</p><p>Number of active economic subjects (units):  ${municipalClicked.ActEcSub}</p><p>Number of newly registered economic entities (units):  ${municipalClicked.newlyRegistredEntities}</p>
           <code>`;
+          } else {
+            popoverTitle = "ძირითადი მაჩვენებლები";
+            data = regionClicked.Name;
+
+            regionContent = `<p>დასახელება: ${regionClicked.Name}</p><p>ფართობი (კვ.კმ): ${regionClicked.Area}</p><p>მოსახლეობის რიცხოვნობა (ათასი): ${regionClicked.Population}</p><p>ცოცხლად დაბადებულთა რიცხოვნობა (კაცი): ${regionClicked.LiveBirths}</p><p>გარდაცვლილთა რიცხოვნობა (კაცი): ${regionClicked.Dead}</p><p>ბუნებრივი მატება (კაცი): ${regionClicked.naturalIncrease}</p><p>მთლიანი შიდა პროდუქტი (მლნ. ლარი): ${regionClicked.GDP}</p><p>მთლიანი შიდა პროდუქტი ერთ სულ მოსახლეზე (აშშ დოლარი): ${regionClicked.GDPPerCapita}</p><p>უმუშევრობის დონე (%): ${regionClicked.UnemploymentRate}</p><p>დასაქმებულთა რაოდენობა, სულ (ათასი კაცი): ${regionClicked.EmploymentRate}</p><p>დასაქმებულთა რაოდენობა - ბიზნეს სექტორში (ათასი კაცი):  ${regionClicked.EmploymentRateIndustry}</p><p>დასაქმებულთა საშუალოთვიური ხელფასი - ბიზნეს სექტორში (ლარი): ${regionClicked.AverageSalaryIndustry}</p><p>რეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${regionClicked.RegistredEntities}</p><p>მოქმედი ეკონომიკური სუბიექტების რაოდენობა (ერთეული): ${regionClicked.activeEntities}</p><p>ახლადრეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული): ${regionClicked.newlyRegistredEntities}</p>
+            <code>`;
+            ("</code>");
+
+            municipalContent = `<p>დასახელება: ${municipalClicked.Name}</p><p>ფართობი (კვ.კმ): ${municipalClicked.Area}</p><p>ქალაქების და დაბების რაოდენობა (ერთეული): ${municipalClicked.NumberOfCT}</p><p>სოფლების რაოდენობა (ერთეული): ${municipalClicked.Villages}</p><p>მოსახლეობის რიცხოვნობა (ათასი): ${municipalClicked.Population}</p><p>ცოცხლად დაბადებულთა რიცხოვნობა (კაცი): ${municipalClicked.LiveBirths}</p><p>შობადობის ზოგადი კოეფიციენტი (მოსახლეობის 1 000 კაცზე): ${municipalClicked.GeneralBirthRate}</p><p>გარდაცვლილთა რიცხოვნობა (კაცი): ${municipalClicked.Dead}</p><p>მოკვდაობის ზოგადი კოეფიციენტი (მოსახლეობის 1 000 კაცზე): ${municipalClicked.GeneralMortalityRate}</p><p>ბუნებრივი მატება (კაცი): ${municipalClicked.naturalIncrease}</p><p>დასაქმებულთა რაოდენობა-ბიზნეს სექტორში (ათასი კაცი):  ${municipalClicked.Employees}</p><p>დასაქმებულთა საშუალოთვიური ხელფასი-ბიზნეს სექტორში (ლარი):  ${municipalClicked.AVGSalary}</p><p>რეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${municipalClicked.RegEcSub}</p><p>მოქმედი ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${municipalClicked.ActEcSub}</p><p>ახლადრეგისტრირებული ეკონომიკური სუბიექტების რაოდენობა (ერთეული):  ${municipalClicked.newlyRegistredEntities}</p>
+          <code>`;
+          }
+
           ("</code>");
           if (viewResolution > 192.6092418558059) {
             content = regionContent;
@@ -225,7 +268,7 @@ map.on("click", function (evt) {
             content: content,
             html: true,
             placement: "top",
-            title: "ძირითადი მაჩვენებლები",
+            title: popoverTitle,
           });
           popover.show();
         })

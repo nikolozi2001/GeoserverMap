@@ -306,8 +306,6 @@ let dziritadi8excel;
 let dziritadi9excel;
 let dziritadi10excel;
 
-
-
 async function updateTexts(data) {
   await data;
   dziri1tadi = data[0].basicInformation;
@@ -371,7 +369,7 @@ async function updateTexts(data) {
   info45macia = data[1].businessSector;
   info46macia = data[2].businessSector;
   info47macia = data[3].businessSector;
-  businessRegister = data[0].businessRegister
+  businessRegister = data[0].businessRegister;
   dziri13tadi = data[0].agriculture;
   info48macia = data[1].agriculture;
   info49macia = data[2].agriculture;
@@ -404,14 +402,12 @@ async function updateTexts(data) {
   dziri18tadi = data[0].tourism;
   info70macia = data[1].tourism;
   info71macia = data[2].tourism;
-  dziritadi5excel = data[0].legalStatistics
-  dziritadi6excel = data[0].healthCareAndSocialSecurity
-  dziritadi7excel = data[0].education
-  dziritadi8excel = data[0].culture
-  dziritadi9excel = data[0].environmentalProtection
-  dziritadi10excel = data[0].infrastructure
-
-
+  dziritadi5excel = data[0].legalStatistics;
+  dziritadi6excel = data[0].healthCareAndSocialSecurity;
+  dziritadi7excel = data[0].education;
+  dziritadi8excel = data[0].culture;
+  dziritadi9excel = data[0].environmentalProtection;
+  dziritadi10excel = data[0].infrastructure;
 
   dziritadi1.innerHTML = dziri1tadi;
   info1.innerHTML = info1macia;
@@ -513,10 +509,6 @@ async function updateTexts(data) {
   dziritadi_excel8.innerHTML = dziritadi8excel;
   dziritadi_excel9.innerHTML = dziritadi9excel;
   dziritadi_excel10.innerHTML = dziritadi10excel;
-
-
-
-  
 }
 
 function fetchDataAndInitialize(callback) {
@@ -529,6 +521,7 @@ function fetchDataAndInitialize(callback) {
 }
 
 fetchDataAndInitialize(updateTexts);
+
 
 lang.addEventListener("click", () => {
   if (language === "ka") {
@@ -548,4 +541,5 @@ lang.addEventListener("click", () => {
     sidetitle.innerHTML = "სტატისტიკა";
     dziritadiMain.innerHTML = "დემოგრაფია";
   }
+  sessionStorage.setItem("lang1", language);
 });
