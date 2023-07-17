@@ -174,11 +174,15 @@ map.on("click", function (evt) {
       municipalView.style.display = "block";
     }
 
-
-
     const prices_inflation = document.getElementById("dziritadi10");
 
-    if (result === "23" || result === "32" || result === "35" || result === "41" || result === "44") {
+    if (
+      result === "23" ||
+      result === "32" ||
+      result === "35" ||
+      result === "41" ||
+      result === "44"
+    ) {
       prices_inflation.style.display = "none";
     } else {
       prices_inflation.style.display = "block";
