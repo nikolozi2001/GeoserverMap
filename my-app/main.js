@@ -164,14 +164,24 @@ map.on("click", function (evt) {
     // console.log(result, "result");
 
     const regionView = document.getElementById("parent_main");
-    // const municipalView = document.getElementById("parent_main2");
+    const municipalView = document.getElementById("parent_main2");
 
     if (viewResolution > 192.6092418558059) {
       regionView.style.display = "block";
-      // municipalView.style.display = "none";
+      municipalView.style.display = "none";
     } else {
       regionView.style.display = "none";
-      // municipalView.style.display = "block";
+      municipalView.style.display = "block";
+    }
+
+
+
+    const prices_inflation = document.getElementById("dziritadi10");
+
+    if (result === "23" || result === "32" || result === "35" || result === "41" || result === "44") {
+      prices_inflation.style.display = "none";
+    } else {
+      prices_inflation.style.display = "block";
     }
 
     // regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
@@ -182,6 +192,9 @@ map.on("click", function (evt) {
 
     // regionDonwlaod[1].href = `/regions/regions/${result}/dziritadi%20informacia/`
 
+    let globalResponseName;
+    let globalResponseNameEN;
+
     let lang1 = sessionStorage.getItem("lang1");
     const regionDonwlaod = document.querySelectorAll(".region_download");
     regionDonwlaod.forEach((item) => {
@@ -190,21 +203,210 @@ map.on("click", function (evt) {
           lang1 = sessionStorage.getItem("lang1");
           // console.log(lang1);
           if (lang1 === "en") {
+            sidetitle.innerHTML = globalResponseNameEN;
             regionDonwlaod[0].href = `/regionseng/${result}/main%20information/area.xlsx`;
             regionDonwlaod[1].href = `/regionseng/${result}/main%20information/number%20of%20settlements.xlsx`;
-            regionDonwlaod[2].href = `/regionseng/${result}/population/population_count.xlsx`;
-            regionDonwlaod[3].href = `/regionseng/${result}/population/residents_in_urban_settlements.xlsx`;
-            regionDonwlaod[4].href = `/regionseng/${result}/population/population_density.xlsx`;
+            regionDonwlaod[2].href = `/regionseng/${result}/population/Number%20of%20population.xlsx`;
+            regionDonwlaod[3].href = `/regionseng/${result}/population/Share%20of%20urban%20population.xlsx`;
+            regionDonwlaod[4].href = `/regionseng/${result}/population/Density%20of%20population.xlsx`;
+            regionDonwlaod[5].href = `/regionseng/Demography/Number%20of%20live%20births/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[6].href = `/regionseng/Demography/Crude%20birth%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[7].href = `/regionseng/Demography/Number%20of%20live%20births%20by%20sex/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[8].href = `/regionseng/Demography/Quantitative%20ratio%20of%20sexes/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[9].href = `/regionseng/Demography/Mean%20age%20of%20childbearing/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[10].href = `/regionseng/Demography/Number%20of%20stillbirths/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[11].href = `/regionseng/Demography/Number%20of%20deaths/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[12].href = `/regionseng/Demography/Crude%20death%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[13].href = `/regionseng/Demography/Number%20of%20deaths%20by%20age%20and%20sex/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[14].href = `/regionseng/Demography/Infant%20mortality%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[15].href = `/regionseng/Demography/Under-5%20mortality%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[16].href = `/regionseng/Demography/Number%20of%20deaths%20by%20chapters%20of%20ICD-10%20and%20sex/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[17].href = `/regionseng/Demography/Number%20of%20deaths%20by%20chapters%20of%20ICD-10%20and%20by%20urban-rural%20settlements/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[18].href = `/regionseng/Demography/Number%20of%20divorced%20people%20by%20age%20groups%20and%20sex/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[19].href = `/regionseng/Demography/Deaths%20from%20suicide/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[20].href = `/regionseng/Demography/Suicide%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[21].href = `/regionseng/Demography/Natural%20increase/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[22].href = `/regionseng/Demography/Natural%20increase%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[23].href = `/regionseng/Demography/Number%20of%20registered%20marriages/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[24].href = `/regionseng/Demography/Crude%20marriage%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[25].href = `/regionseng/Demography/Number%20of%20married%20people/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[26].href = `/regionseng/Demography/Mean%20age%20of%20spouses/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[27].href = `/regionseng/Demography/Number%20of%20registered%20divorces/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[28].href = `/regionseng/Demography/Crude%20divorce%20rate/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[29].href = `/regionseng/Demography/Number%20of%20divorced%20people%20by%20age%20groups%20and%20sex/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[30].href = `/regionseng/Population%20census/Median%20age%20of%20population/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[31].href = `/regionseng/Population%20census/Percentage%20of%20population%20aged%2065%20and%20over/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[32].href = `/regionseng/Population%20census/Age%20dependency%20ratios/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[33].href = `/regionseng/Population%20census/Number%20of%20population/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[34].href = `/regionseng/Population%20census/Share%20of%20working%20age%20population/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[35].href = `/regionseng/Population%20census/Number%20of%20private%20households/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[36].href = `/regionseng/${result}/gdp%20and%20va/gdp%20and%20va.xls`;
+            regionDonwlaod[37].href = `/regionseng/${result}/ext.trade%20and%20foreign%20direct%20invset/ext.trade%20and%20foreign%20direct%20invset.xlsx`;
+            regionDonwlaod[38].href = `/regionseng/${result}/employment%20and%20unemployment/employment%20and%20unemployment.xlsx`;
+            regionDonwlaod[39].href = `/regionseng/${result}/employment%20and%20unemployment/wages.xlsx`;
+            regionDonwlaod[40].href = `/regionseng/${result}/prices/consumer%20price%20index%2012%20month%20avarage%20over%20the%20previous%2012%20month%20avarage.xlsx`;
+            regionDonwlaod[41].href = `/regionseng/${result}/prices/consumer%20price%20index%20to%20the%20previous%20month.xlsx`;
+            regionDonwlaod[42].href = `/regionseng/${result}/prices/consumer%20price%20index%20to%20the%20same%20month%20of%20previous%20year.xlsx`;
+            regionDonwlaod[43].href = `/regionseng/${result}/prices/consumer%20price%20index%202010%20=%20100.xlsx`;
+            regionDonwlaod[44].href = `/regionseng/${result}/standard%20of%20living/incomes.xlsx`;
+            regionDonwlaod[45].href = `/regionseng/${result}/standard%20of%20living/expenditures.xlsx`;
+            regionDonwlaod[46].href = `/regionseng/${result}/business%20sector/by%20kind%20of%20activity_nace%20rev.2.xlsx`;
+            regionDonwlaod[47].href = `/regionseng/${result}/business%20sector/by%20ownership.xlsx`;
+            regionDonwlaod[48].href = `/regionseng/${result}/business%20sector/by%20size.xlsx`;
+            regionDonwlaod[49].href = `/regionseng/${result}/agriculture/1.%20Annual%20crops.xlsx`;
+            regionDonwlaod[50].href = `/regionseng/${result}/agriculture/2.%20Production%20of%20permanent%20crops.xlsx`;
+            regionDonwlaod[51].href = `/regionseng/${result}/agriculture/3.%20Number%20of%20livestock.xlsx`;
+            regionDonwlaod[52].href = `/regionseng/${result}/agriculture/4.%20Production%20of%20animal%20housbandry.xlsx`;
+            regionDonwlaod[53].href = `/regionseng/${result}/industry/industry.xlsx`;
+            regionDonwlaod[54].href = `/regionseng/${result}/construction/mshenebloba_nebartvebi.xlsx`;
+            regionDonwlaod[55].href = `/regionseng/${result}/construction/eqspluataciashi%20migebuli%20obieqtebi.xlsx`;
+            regionDonwlaod[56].href = `/regionseng/${result}/construction/mshenebloba_dziritadi%20machveneblebi.xlsx`;
+            regionDonwlaod[57].href = `/regionseng/service/By%20organizational%20legal%20forms/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[58].href = `/regionseng/service/By%20ownership%20type/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[59].href = `/regionseng/service/Number%20of%20markets%20and%20fairs%20by%20type/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[60].href = `/regionseng/service/Days%20of%20trade/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[61].href = `/regionseng/service/Employed%20persons/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[62].href = `/regionseng/service/Market-place%20and%20sellers/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[63].href = `/regionseng/service/Financial%20indices%20of%20markets/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[64].href = `/regionseng/${result}/trade/trade.xlsx`;
+            regionDonwlaod[65].href = `/regionseng/${result}/hotels%20and%20restaurants/hotels%20and%20restaurants.xlsx`;
+            regionDonwlaod[66].href = `/regionseng/Hotels/Number%20of%20Hotels/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[67].href = `/regionseng/Hotels/Number%20of%20Rooms/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[68].href = `/regionseng/Hotels/Number%20of%20Guests/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[69].href = `/regionseng/Hotels/Number%20of%20Employees/${globalResponseNameEN}.xlsx`;
+            regionDonwlaod[70].href = `/regionseng/${result}/transport%20and%20storage/transport%20and%20storage.xlsx`;
+            regionDonwlaod[71].href = `/regionseng/${result}/transport%20and%20storage/number%20of%20motor%20vehicles.xlsx`;
+            regionDonwlaod[72].href = `/regionseng/${result}/transport%20and%20storage/the%20length%20of%20the%20roads.xlsx`;
+            regionDonwlaod[73].href = `/regionseng/${result}/tourism/place%20of%20residence.xls`;
+            regionDonwlaod[74].href = `/regionseng/${result}/tourism/visited%20regions.xls`;
+            regionDonwlaod[75].href = `/regionseng/${result}/justice statistics/justice%20statistics.xlsx`;
+            regionDonwlaod[76].href = `/regionseng/${result}/health%20care%20and%20social%20protection/health%20care%20and%20social%20protection.xlsx`;
+            regionDonwlaod[77].href = `/regionseng/${result}/education/education.xlsx`;
+            regionDonwlaod[78].href = `/regionseng/${result}/culture/culture.xlsx`;
+            regionDonwlaod[79].href = `/regionseng/${result}/environmental%20protection/environmental%20protection.xlsx`;
+            regionDonwlaod[80].href = `/regionseng/${result}/infrastructure/infrastructure.xlsx`;
           } else {
+            sidetitle.innerHTML = globalResponseName;
             regionDonwlaod[0].href = `/regions/${result}/dziritadi%20informacia/regionis%20fartobi.xlsx`;
             regionDonwlaod[1].href = `/regions/${result}/dziritadi%20informacia/municipalitetebis,%20qalaqebis%20da%20soflebis%20raodenoba.xlsx`;
             regionDonwlaod[2].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20რიცხოვნობა.xlsx`;
             regionDonwlaod[3].href = `/regions/${result}/mosakhleoba/საქალაქო%20დასახლებაში%20მცხოვრები.xlsx`;
             regionDonwlaod[4].href = `/regions/${result}/mosakhleoba/მოსახლეობის%20სიმჭიდროვე.xlsx`;
+            regionDonwlaod[5].href = `/regions/დემოგრაფია/ცოცხლად%20დაბადებულთა%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[6].href = `/regions/დემოგრაფია/შობადობის%20ზოგადი%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[7].href = `/regions/დემოგრაფია/ცოცხლად%20დაბადებულთა%20რიცხოვნობა%20სქესის%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[8].href = `/regions/დემოგრაფია/სქესთა%20რაოდენობრივი%20თანაფარდობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[9].href = `/regions/დემოგრაფია/დედის%20საშუალო%20ასაკი%20ბავშვის%20დაბადებისას/${globalResponseName}.xlsx`;
+            regionDonwlaod[10].href = `/regions/დემოგრაფია/მკვდრადშობილთა%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[11].href = `/regions/დემოგრაფია/გარდაცვლილთა%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[12].href = `/regions/დემოგრაფია/მოკვდაობის%20ზოგადი%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[13].href = `/regions/დემოგრაფია/გარდაცვლილთა%20რიცხოვნობა%20ასაკის%20და%20სქესის%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[14].href = `/regions/დემოგრაფია/ჩვილ%20ბავშვთა%20მოკვდაობის%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[15].href = `/regions/დემოგრაფია/5%20წლამდე%20ასაკის%20ბავშვთა%20მოკვდაობის%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[16].href = `/regions/დემოგრაფია/გარდაცვალების%20მიზეზები%20სქესის%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[17].href = `/regions/დემოგრაფია/გარდაცვალების%20მიზეზები%20საქალაქო%20სასოფლო%20დასახლებების%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[18].href = `/regions/დემოგრაფია/გარდაცვლილთა%20რიცხოვნობა%20ასაკის%20და%20სქესის%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[19].href = `/regions/დემოგრაფია/თვითმკვლელობით%20გარდაცვლილთა%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[20].href = `/regions/დემოგრაფია/თვითმკვლელობის%20შედეგად%20სიკვილიანობის%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[21].href = `/regions/დემოგრაფია/ბუნებრივი%20მატება/${globalResponseName}.xlsx`;
+            regionDonwlaod[22].href = `/regions/დემოგრაფია/ბუნებრივი%20მატების%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[23].href = `/regions/დემოგრაფია/რეგისტრირებულ%20ქორწინებათა%20რაოდენობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[24].href = `/regions/დემოგრაფია/ქორწინების%20ზოგადი%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[25].href = `/regions/დემოგრაფია/დაქორწინებულთა%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[26].href = `/regions/დემოგრაფია/ქორწინების%20საშუალო%20ასაკი/${globalResponseName}.xlsx`;
+            regionDonwlaod[27].href = `/regions/დემოგრაფია/რეგისტრირებულ%20განქორწინებათა%20რაოდენობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[28].href = `/regions/დემოგრაფია/განქორწინების%20ზოგადი%20კოეფიციენტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[29].href = `/regions/დემოგრაფია/განქორწინებულთა%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[30].href = `/regions/მოსახლეობის%20აღწერა/მოსახლეობის%20მედიანური%20ასაკი/${globalResponseName}.xlsx`;
+            regionDonwlaod[31].href = `/regions/მოსახლეობის%20აღწერა/65%20წელზე%20მეტი/${globalResponseName}.xlsx`;
+            regionDonwlaod[32].href = `/regions/მოსახლეობის%20აღწერა/ასაკის%20დატვირთვის%20კოეფიციენტები/${globalResponseName}.xlsx`;
+            regionDonwlaod[33].href = `/regions/მოსახლეობის%20აღწერა/მოსახლეობის%20რიცხოვნობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[34].href = `/regions/მოსახლეობის%20აღწერა/შრომისუნარიანი%20ასაკის/${globalResponseName}.xlsx`;
+            regionDonwlaod[35].href = `/regions/მოსახლეობის%20აღწერა/კერძო%20შინამეურნეობები/${globalResponseName}.xlsx`;
+            regionDonwlaod[36].href = `/regions/${result}/mshp%20da%20damatebuli%20girebuleba/mshp%20da%20damatebuli%20girebuleba.xls`;
+            regionDonwlaod[37].href = `/regions/${result}/pirdapiri%20uckhouri%20investiciebi/pirdapiri%20uckhouri%20investiciebi.xlsx`;
+            regionDonwlaod[38].href = `/regions/${result}/dasaqmeba_umushevroba/dasaqmeba_umushevroba.xlsx`;
+            regionDonwlaod[39].href = `/regions/${result}/dasaqmeba_umushevroba/khelfasi.xlsx`;
+            regionDonwlaod[40].href = `/regions/${result}/fasebi/samomxmareblo%20fasebis%20indeqsebi%2012%20tvis%20sashualo%20wina%2012%20Tvis%20saSualosTan.xlsx`;
+            regionDonwlaod[41].href = `/regions/${result}/fasebi/samomxmareblo%20fasebis%20indeqsebi%20wina%20TvesTan.xlsx`;
+            regionDonwlaod[42].href = `/regions/${result}/fasebi/samomxmareblo%20fasebis%20indeqsebi%20wina%20wlis%20shesabamis%20TvesTan.xlsx`;
+            regionDonwlaod[43].href = `/regions/${result}/fasebi/samomxmareblo%20fasebis%20indeqsebi%202010%20wlis%20sashualo=100.xlsx`;
+            regionDonwlaod[44].href = `/regions/${result}/ckhovrebis%20done/shemosavlebi.xlsx`;
+            regionDonwlaod[45].href = `/regions/${result}/ckhovrebis%20done/kharjebi.xlsx`;
+            regionDonwlaod[46].href = `/regions/${result}/biznes%20seqtori/saqmianobis%20mikhedvit_nace%20rev.2.xlsx`;
+            regionDonwlaod[47].href = `/regions/${result}/biznes%20seqtori/sakutrebis%20formis%20mikhedvit.xlsx`;
+            regionDonwlaod[48].href = `/regions/${result}/biznes%20seqtori/zomis%20mikhedvit.xlsx`;
+            regionDonwlaod[49].href = `/regions/${result}/soflis%20meurneoba/1.%20erttsliani%20kulturebi.xlsx`;
+            regionDonwlaod[50].href = `/regions/${result}/soflis%20meurneoba/2.%20mravaltslovani%20kulturebis%20tsarmoeba.xlsx`;
+            regionDonwlaod[51].href = `/regions/${result}/soflis%20meurneoba/3.%20pirutkvis%20suladoba.xlsx`;
+            regionDonwlaod[52].href = `/regions/${result}/soflis%20meurneoba/4.%20metskhoveleobis%20produktsiis%20tsarmoeba.xlsx`;
+            regionDonwlaod[53].href = `/regions/${result}/mretsveloba/mretsveloba.xlsx`;
+            regionDonwlaod[54].href = `/regions/${result}/mshenebloba/mshenebloba_nebartvebi.xlsx`;
+            regionDonwlaod[55].href = `/regions/${result}/mshenebloba/eqspluataciashi%20migebuli%20obieqtebi.xlsx`;
+            regionDonwlaod[56].href = `/regions/${result}/mshenebloba/mshenebloba_dziritadi%20machveneblebi.xlsx`;
+            regionDonwlaod[57].href = `/regions/მომსახურება/ორგანიზაციულ%20სამართლებრივი/${globalResponseName}.xlsx`;
+            regionDonwlaod[58].href = `/regions/მომსახურება/საკუთრების%20ფორმების%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[59].href = `/regions/მომსახურება/ტიპების%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[60].href = `/regions/მომსახურება/ვაჭრობის%20დღეთა%20რაოდენობის%20მიხედვით/${globalResponseName}.xlsx`;
+            regionDonwlaod[61].href = `/regions/მომსახურება/დირექციაში%20დასაქმებულები/${globalResponseName}.xlsx`;
+            regionDonwlaod[62].href = `/regions/მომსახურება/სავაჭრო%20ადგილები%20და%20მოვაჭრეთა%20რაოდენობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[63].href = `/regions/მომსახურება/საფინანსო%20მაჩვენებლები/${globalResponseName}.xlsx`;
+            regionDonwlaod[64].href = `/regions/${result}/vachroba/vachroba.xlsx`;
+            regionDonwlaod[65].href = `/regions/${result}/sastumroebi%20da%20restornebi/sastumroebi%20da%20restornebi.xlsx`;
+            regionDonwlaod[66].href = `/regions/სასტუმროები/რაოდენობა%20და%20ფართობი/${globalResponseName}.xlsx`;
+            regionDonwlaod[67].href = `/regions/სასტუმროები/ნომრების%20რაოდენობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[68].href = `/regions/სასტუმროები/სტუმართა%20რაოდენობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[69].href = `/regions/სასტუმროები/დასაქმებულთა%20რაოდენობა/${globalResponseName}.xlsx`;
+            regionDonwlaod[70].href = `/regions/${result}/transporti%20da%20dasawyobeba/transporti%20da%20dasawyobeba.xlsx`;
+            regionDonwlaod[71].href = `/regions/${result}/transporti%20da%20dasawyobeba/registrirebuli%20avtomobilebis%20raodenoba.xlsx`;
+            regionDonwlaod[72].href = `/regions/${result}/transporti%20da%20dasawyobeba/gzebis%20sigrdze.xlsx`;
+            regionDonwlaod[73].href = `/regions/${result}/turizmi/ganawileba%20sacxovrebeli%20adgilis%20mixedvit.xls`;
+            regionDonwlaod[74].href = `/regions/${result}/turizmi/ganawileba%20monaxulebuli%20regionebit.xls`;
+            regionDonwlaod[75].href = `/regions/${result}/samartlebrivi%20statistika/samartlebrivi%20statistika.xlsx`;
+            regionDonwlaod[76].href = `/regions/${result}/jandacva%20da%20socialuri%20uzrunvelkofa/jandacva%20da%20socialuri%20uzrunvelkofa.xlsx`;
+            regionDonwlaod[77].href = `/regions/${result}/ganatleba/ganatleba.xlsx`;
+            regionDonwlaod[78].href = `/regions/${result}/kultura/kultura.xlsx`;
+            regionDonwlaod[79].href = `/regions/${result}/garemos%20dacva/garemos%20dacva.xlsx`;
+            regionDonwlaod[80].href = `/regions/${result}/infrastruqtura/infrastruqtura.xlsx`;
           }
         }
       });
     });
+    console.log(result);
+
+    axios
+      .get(`http://localhost:3000/getMunicipalName/?id=${result}`)
+      .then((response) => {
+        globalResponseName = response.data[0].Name;
+        globalResponseNameEN = response.data[0].NameEN;
+        console.log(globalResponseName, "globalResponseName");
+        console.log(globalResponseNameEN, "globalResponseNameEN");
+        console.log(response.data[0]);
+        const municipalDonwlaod = document.querySelectorAll(
+          ".municipal_download"
+        );
+        municipalDonwlaod.forEach((item) => {
+          item.addEventListener("click", (event) => {
+            lang1 = sessionStorage.getItem("lang1");
+            console.log(`Language value: '${lang1}'`);
+            if (lang1 === "en") {
+              sidetitle.innerHTML = globalResponseNameEN;
+              municipalDonwlaod[0].href = `/municipal/ENG/Main%20Information/Municipality%20area/${response.data[0].NameEN}%20Municipality.xlsx`;
+              municipalDonwlaod[1].href = `/municipal/ENG/Main%20Information/Administrative%20structure/${response.data[0].NameEN}.xlsx`;
+              municipalDonwlaod[2].href = `/municipal/ENG/Population/Number%20of%20population/${response.data[0].NameEN}.xlsx`;
+              municipalDonwlaod[3].href = `/municipal/ENG/Population/Share%20of%20urban%20population/${response.data[0].NameEN}.xlsx`;
+              municipalDonwlaod[4].href = `/municipal/ENG/Population/Density%20of%20population/${response.data[0].NameEN}.xlsx`;
+            } else {
+              sidetitle.innerHTML = globalResponseName;
+              municipalDonwlaod[0].href = `/municipal/ძირითადი%20ინფორმაცია/მუნიციპალიტეტის%20ფართობი/${response.data[0].Name}.xlsx`;
+              municipalDonwlaod[1].href = `/municipal/ძირითადი%20ინფორმაცია/ადმინისტრაციული%20მოწყობა/${response.data[0].Name}.xlsx`;
+              municipalDonwlaod[2].href = `/municipal/მოსახლეობა/მოსახლეობის%20რიცხოვნობა%20საქალაქო-სასოფლო%20დასახლებების%20მიხედვით/${response.data[0].Name}.xlsx`;
+              municipalDonwlaod[3].href = `/municipal/მოსახლეობა/საქალაქო%20დასახლებაში%20მცხოვრები%20მოსახლეობის%20წილი/${response.data[0].Name}.xlsx`;
+              municipalDonwlaod[4].href = `/municipal/მოსახლეობა/მოსახლეობის%20სიმჭიდროვე/${response.data[0].Name}.xlsx`;
+            }
+          });
+        });
+      });
 
     if (result && result > 0) {
       axios

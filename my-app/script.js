@@ -32,6 +32,37 @@ let itemsToShow = {
   dziritadiMain20: "informaciaMain20",
 };
 
+let itemsToShow2 = {
+  dziritadi2_1: "informacia1",
+  dziritadi2_2: "informacia2",
+  dziritadi2_3: "informacia3",
+  dziritadi2_4: "informacia4",
+  dziritadi2_5: "informacia5",
+  dziritadi2_6: "informacia6",
+  dziritadi2_7: "informacia7",
+  dziritadi2_8: "informacia8",
+  dziritadi2_9: "informacia9",
+  dziritadi2_10: "informacia10",
+  dziritadi2_11: "informacia11",
+  dziritadi2_12: "informacia12",
+  dziritadi2_13: "informacia13",
+  dziritadi2_14: "informacia14",
+  dziritadi2_15: "informacia15",
+  dziritadi2_16: "informacia16",
+  dziritadi2_17: "informacia17",
+  dziritadi2_18: "informacia18",
+  dziritadi2_19: "informacia19",
+  dziritadi2_20: "informacia20",
+  dziritadi2_21: "informacia21",
+  dziritadi2_22: "informacia22",
+  dziritadi2_31: "informacia31",
+  dziritadi2_32: "informacia32",
+  dziritadi2_33: "informacia33",
+  dziritadi2_34: "informacia34",
+  dziritadi2_35: "informacia35",
+  dziritadi2_36: "informacia36",
+}
+
 let elements = document.querySelectorAll(".click__item");
 elements.forEach(function (element) {
   element.addEventListener("click", function (event) {
@@ -60,6 +91,17 @@ elements.forEach(function (element) {
           element.style.display = "flex";
         }
       }
+    }
+
+    var informacia2 = document.querySelectorAll(`.${itemsToShow2[dziritadiel]}`);
+    if (informacia2) {
+      informacia2.forEach(function (element) {
+        if (element.style.display === "flex") {
+          element.style.display = "none";
+        } else {
+          element.style.display = "flex";
+        }
+      });
     }
   });
 });
@@ -187,15 +229,30 @@ const lang = document.getElementById("lang");
 // const info2 = document.getElementById("info2");
 
 function fetchData(lang) {
-  axios
-    .get(`http://localhost:3000/regions/?lang=${lang ? lang : "ka"}`)
-    .then((response) => {
-      // Handle the successful response
-      updateTexts(response.data);
+  // Create two separate requests
+  const request1 = axios.get(
+    `http://localhost:3000/regions/?lang=${lang ? lang : "ka"}`
+  );
+  const request2 = axios.get(
+    `http://localhost:3000/municipal/?lang=${lang ? lang : "ka"}`
+  );
 
-      // Update the map or perform any other actions with the response data
-      // ...
-    })
+  // Execute both requests concurrently
+  axios
+    .all([request1, request2])
+    .then(
+      axios.spread((response1, response2) => {
+        // Handle the responses of both requests
+        const regionsData = response1.data;
+        const municipalData = response2.data;
+
+        // Update texts and perform other actions with the data
+        updateTexts(regionsData);
+        updateTexts2(municipalData);
+
+        // ...
+      })
+    )
     .catch((error) => {
       // Handle any errors
       console.error(error);
@@ -511,6 +568,41 @@ async function updateTexts(data) {
   dziritadi_excel10.innerHTML = dziritadi10excel;
 }
 
+//municipalText
+const main2 = document.getElementById("parent_main2");
+
+// const dziritadi2_1 = document.getElementById("dziritadi2_1");
+// const dziritadi2_1 = document.querySelectorAll(".dziritadi1");
+// const dziritadi2_2 = document.querySelectorAll(".dziritadi2");
+
+let data2; // Declare the data variable in a higher scope
+let Dziri2_1tadi;
+let info2_1macia;
+let info2_2macia;
+let Dziri2_2tadi;
+let info2_3macia;
+let info2_4macia;
+let info2_5macia;
+
+async function updateTexts2(data) {
+  await data2;
+  Dziri2_1tadi = data[0].basicInformation;
+  info2_1macia = data[1].basicInformation;
+  info2_2macia = data[2].basicInformation;
+  Dziri2_2tadi = data[0].Population;
+  info2_3macia = data[1].Population;
+  info2_4macia = data[2].Population;
+  info2_5macia = data[3].Population;
+
+  dziritadi2_1.innerHTML = Dziri2_1tadi;
+  info2_1.innerHTML = info2_1macia;
+  info2_2.innerHTML = info2_2macia;
+  dziritadi2_2.innerHTML = Dziri2_2tadi;
+  info2_3.innerHTML = info2_3macia;
+  info2_4.innerHTML = info2_4macia;
+  info2_5.innerHTML = info2_5macia;
+}
+
 function fetchDataAndInitialize(callback) {
   fetchData("ka", (fetchedData) => {
     data = fetchedData;
@@ -520,8 +612,7 @@ function fetchDataAndInitialize(callback) {
   });
 }
 
-fetchDataAndInitialize(updateTexts);
-
+fetchDataAndInitialize(updateTexts, updateTexts2);
 
 lang.addEventListener("click", () => {
   if (language === "ka") {
@@ -529,17 +620,20 @@ lang.addEventListener("click", () => {
     fetchData(language, (fetchedData) => {
       data = fetchedData;
       updateTexts();
+      updateTexts2();
     });
-    sidetitle.innerHTML = "Statistic";
+    // sidetitle.innerHTML = "Statistic";
     dziritadiMain.innerHTML = "Demography";
   } else {
     language = "ka";
     fetchData(language, (fetchedData) => {
       data = fetchedData;
       updateTexts();
+      updateTexts2();
     });
-    sidetitle.innerHTML = "სტატისტიკა";
+    // sidetitle.innerHTML = "სტატისტიკა";
     dziritadiMain.innerHTML = "დემოგრაფია";
   }
   sessionStorage.setItem("lang1", language);
+  console.log(language, "language");
 });

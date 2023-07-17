@@ -65,6 +65,11 @@ body {
     text-align: center;
 }
 
+#parent_main,
+#parent_main2 {
+    display: none;
+}
+
 #lang {
     cursor: pointer;
 }
@@ -125,7 +130,35 @@ body {
 #dziritadi35,
 #dziritadi36,
 #dziritadiMain,
-#dziritadiMain2 {
+#dziritadiMain2,
+#dziritadi2_1,
+#dziritadi2_2,
+#dziritadi2_3,
+#dziritadi2_4,
+#dziritadi2_5,
+#dziritadi2_6,
+#dziritadi2_7,
+#dziritadi2_8,
+#dziritadi2_9,
+#dziritadi2_10,
+#dziritadi2_11,
+#dziritadi2_12,
+#dziritadi2_13,
+#dziritadi2_14,
+#dziritadi2_15,
+#dziritadi2_16,
+#dziritadi2_17,
+#dziritadi2_18,
+#dziritadi2_19,
+#dziritadi2_20,
+#dziritadi2_21,
+#dziritadi2_22,
+#dziritadi2_31,
+#dziritadi2_32,
+#dziritadi2_33,
+#dziritadi2_34,
+#dziritadi2_35,
+#dziritadi2_36 {
     width: 330px;
     font-weight: bolder;
     background: url("https://cdn-icons-png.flaticon.com/512/32/32195.png") no-repeat;
@@ -280,7 +313,35 @@ body {
 #dziritadi35:hover,
 #dziritadi36:hover,
 #dziritadiMain:hover,
-#dziritadiMain2:hover {
+#dziritadiMain2:hover,
+#dziritadi2_1:hover,
+#dziritadi2_2:hover,
+#dziritadi2_3:hover,
+#dziritadi2_4:hover,
+#dziritadi2_5:hover,
+#dziritadi2_6:hover,
+#dziritadi2_7:hover,
+#dziritadi2_8:hover,
+#dziritadi2_9:hover,
+#dziritadi2_10:hover,
+#dziritadi2_11:hover,
+#dziritadi2_12:hover,
+#dziritadi2_13:hover,
+#dziritadi2_14:hover,
+#dziritadi2_15:hover,
+#dziritadi2_16:hover,
+#dziritadi2_17:hover,
+#dziritadi2_18:hover,
+#dziritadi2_19:hover,
+#dziritadi2_20:hover,
+#dziritadi2_21:hover,
+#dziritadi2_22:hover,
+#dziritadi2_31:hover,
+#dziritadi2_32:hover,
+#dziritadi2_33:hover,
+#dziritadi2_34:hover,
+#dziritadi2_35:hover,
+#dziritadi2_36:hover {
     background-color: #f5f5f5 !important;
     border-bottom: 1px solid #ddd !important;
 }

@@ -18,7 +18,7 @@ var con = mysql.createConnection({
 
 con.connect(function (err) {
   app.get("/getMapIndexes", (req, res) => {
-    let id = req.query.id.toString()
+    let id = req.query.id.toString();
     if (err) throw err;
     con.query(
       `SELECT * FROM municipalities WHERE MUNICIPALI=${id}`,
@@ -31,14 +31,45 @@ con.connect(function (err) {
     );
   });
 
+  app.get("/getMunicipalName", (req, res) => {
+    let id = req.query.id.toString();
+    if (err) throw err;
+    con.query(
+      `SELECT Name, NameEN FROM municipalities WHERE MUNICIPALI=${id}`,
+      function (err, result) {
+        if (err) throw err;
+        else {
+          res.send(result);
+        }
+      }
+    );
+  });
+
   app.get("/regions", (req, res) => {
-  
-    let lang = req.query.lang
-    console.log(lang)
+    let lang = req.query.lang;
+    console.log(lang);
     if (err) throw err;
     con.query(
       `SELECT * FROM ${
         lang === "ka" ? "regional_statistics" : "regional_statistics_en"
+      }`,
+      function (err, result) {
+        if (err) throw err;
+        else {
+          console.log(result);
+          res.send(result);
+        }
+      }
+    );
+  });
+
+  app.get("/municipal", (req, res) => {
+    let lang = req.query.lang;
+    console.log(lang);
+    if (err) throw err;
+    con.query(
+      `SELECT * FROM ${
+        lang === "ka" ? "municipal_statistics" : "municipal_statistics_en"
       }`,
       function (err, result) {
         if (err) throw err;
