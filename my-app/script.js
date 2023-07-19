@@ -61,6 +61,8 @@ let itemsToShow2 = {
   dziritadi2_34: "informacia34",
   dziritadi2_35: "informacia35",
   dziritadi2_36: "informacia36",
+  dziritadiMainMunic: "informaciaMainMunic",
+  dziritadiMainMunic2: "informaciaMainMunic2"
 }
 
 let elements = document.querySelectorAll(".click__item");
@@ -144,9 +146,67 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const demografiaShow2 = document.getElementsByClassName("demografiaShow2");
+  for (let i = 0; i < demografiaShow2.length; i++) {
+    demografiaShow2[i].addEventListener("click", () => {
+      for (let j = 3; j < 9; j++) {
+        const x = document.getElementById(`dziritadi2_${j}`);
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const registerShowMunic = document.getElementsByClassName("registerShowMunic");
+  for (let i = 0; i < registerShowMunic.length; i++) {
+    registerShowMunic[i].addEventListener("click", () => {
+      for (let j = 12; j < 15; j++) {
+        const x = document.getElementById(`dziritadi2_${j}`);
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+    });
+  }
+});
+
 const demographchildItem = document.getElementById("dziritadi3");
 demographchildItem.addEventListener("click", () => {
   const collection = document.getElementsByClassName("informacia3");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "flex") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "flex";
+    }
+  }
+});
+
+const demographchildItem2_3 = document.getElementById("dziritadi2_3");
+demographchildItem2_3.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia3");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "flex") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "flex";
+    }
+  }
+});
+
+const demographchildItem2_4 = document.getElementById("dziritadi2_4");
+demographchildItem2_4.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia4");
   for (let index = 0; index < collection.length; index++) {
     const element = collection[index];
     if (element.style.display === "flex") {
@@ -183,8 +243,34 @@ demographchildItem5.addEventListener("click", () => {
   }
 });
 
+const demographchildItem2_5 = document.getElementById("dziritadi2_5");
+demographchildItem2_5.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia5");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "flex") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "flex";
+    }
+  }
+});
+
 const demographchildItem6 = document.getElementById("dziritadi6");
 demographchildItem6.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia6");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "flex") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "flex";
+    }
+  }
+});
+
+const demographchildItem2_6 = document.getElementById("dziritadi2_6");
+demographchildItem2_6.addEventListener("click", () => {
   const collection = document.getElementsByClassName("informacia6");
   for (let index = 0; index < collection.length; index++) {
     const element = collection[index];
@@ -209,8 +295,34 @@ demographchildItem7.addEventListener("click", () => {
   }
 });
 
+const demographchildItem2_7 = document.getElementById("dziritadi2_7");
+demographchildItem2_7.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia7");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "flex") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "flex";
+    }
+  }
+});
+
 const demographchildItem8 = document.getElementById("dziritadi8");
 demographchildItem8.addEventListener("click", () => {
+  const collection = document.getElementsByClassName("informacia8");
+  for (let index = 0; index < collection.length; index++) {
+    const element = collection[index];
+    if (element.style.display === "flex") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "flex";
+    }
+  }
+});
+
+const demographchildItem2_8 = document.getElementById("dziritadi2_8");
+demographchildItem2_8.addEventListener("click", () => {
   const collection = document.getElementsByClassName("informacia8");
   for (let index = 0; index < collection.length; index++) {
     const element = collection[index];
@@ -583,6 +695,77 @@ let Dziri2_2tadi;
 let info2_3macia;
 let info2_4macia;
 let info2_5macia;
+let dziri2_3tadi;
+let info2_6macia;
+let info2_7macia;
+let info2_8macia;
+let info2_9macia;
+let info2_10macia;
+let info2_11macia;
+let dziri2_4tadi;
+let info2_12macia;
+let info2_13macia;
+let info2_14macia;
+let info2_15macia;
+let info2_16macia;
+let info2_17macia;
+let info2_18macia;
+let info2_19macia;
+let info2_20macia;
+let info2_21macia;
+let dziri2_5tadi;
+let info2_22macia;
+let info2_23macia;
+let dziri2_6tadi;
+let info2_24macia;
+let info2_25macia;
+let info2_26macia;
+let info2_27macia;
+let dziri2_7tadi;
+let info2_28macia;
+let info2_29macia;
+let info2_30macia;
+let dziri2_8tadi;
+let info2_31macia;
+let info2_32macia;
+let info2_33macia;
+let info2_34macia;
+let info2_35macia;
+let info2_36macia;
+let dziri2_9tadi;
+let info2_37macia;
+let info2_38macia;
+let info2_39macia;
+let dziri2_10tadi;
+let info2_40macia;
+let info2_41macia;
+let info2_42macia;
+let info2_43macia;
+let info2_44macia;
+let info2_45macia;
+let info2_46macia;
+let info2_47macia;
+let dziri2_11tadi;
+let info2_48macia;
+let info2_49macia;
+let info2_50macia;
+let info2_51macia;
+let dziri2_12tadi;
+let info2_52macia;
+let info2_53macia;
+let dziri2_13tadi;
+let info2_54macia;
+let info2_55macia;
+let info2_56macia;
+let dziri2_14tadi;
+let info2_57macia;
+let info2_58macia;
+let info2_59macia;
+let dziritadi2_1excel;
+let dziri2_15tadi;
+let info2_60macia;
+let info2_61macia;
+
 
 async function updateTexts2(data) {
   await data2;
@@ -593,6 +776,77 @@ async function updateTexts2(data) {
   info2_3macia = data[1].Population;
   info2_4macia = data[2].Population;
   info2_5macia = data[3].Population;
+  dziri2_3tadi = data[0].birth;
+  info2_6macia = data[1].birth;
+  info2_7macia = data[2].birth;
+  info2_8macia = data[3].birth;
+  info2_9macia = data[4].birth;
+  info2_10macia = data[5].birth;
+  info2_11macia = data[6].birth;
+  dziri2_4tadi = data[0].death;
+  info2_12macia = data[1].death;
+  info2_13macia = data[2].death;
+  info2_14macia = data[3].death;
+  info2_15macia = data[4].death;
+  info2_16macia = data[5].death;
+  info2_17macia = data[6].death;
+  info2_18macia = data[7].death;
+  info2_19macia = data[8].death;
+  info2_20macia = data[9].death;
+  info2_21macia = data[10].death;
+  dziri2_5tadi = data[0].naturalIncrease;
+  info2_22macia = data[1].naturalIncrease;
+  info2_23macia = data[2].naturalIncrease;
+  dziri2_6tadi = data[0].marriage;
+  info2_24macia = data[1].marriage;
+  info2_25macia = data[2].marriage;
+  info2_26macia = data[3].marriage;
+  info2_27macia = data[4].marriage;
+  dziri2_7tadi = data[0].divorce;
+  info2_28macia = data[1].divorce;
+  info2_29macia = data[2].divorce;
+  info2_30macia = data[3].divorce;
+  dziri2_8tadi = data[0].populationDescription;
+  info2_31macia = data[1].populationDescription;
+  info2_32macia = data[2].populationDescription;
+  info2_33macia = data[3].populationDescription;
+  info2_34macia = data[4].populationDescription;
+  info2_35macia = data[5].populationDescription;
+  info2_36macia = data[6].populationDescription;
+  dziri2_9tadi = data[0].employmentAndSalaries;
+  info2_37macia = data[1].employmentAndSalaries;
+  info2_38macia = data[2].employmentAndSalaries;
+  info2_39macia = data[3].employmentAndSalaries;
+  dziri2_10tadi = data[0].businessSector;
+  info2_40macia = data[1].businessSector;
+  info2_41macia = data[2].businessSector;
+  info2_42macia = data[3].businessSector;
+  info2_43macia = data[4].businessSector;
+  info2_44macia = data[5].businessSector;
+  info2_45macia = data[6].businessSector;
+  info2_46macia = data[7].businessSector;
+  info2_47macia = data[8].businessSector;
+  dziri2_11tadi = data[0].businessRegister;
+  info2_48macia = data[1].businessRegister;
+  info2_49macia = data[2].businessRegister;
+  info2_50macia = data[3].businessRegister;
+  info2_51macia = data[4].businessRegister;
+  dziri2_12tadi = data[0].accordingToTheTypesOfActivities;
+  info2_52macia = data[1].accordingToTheTypesOfActivities;
+  info2_53macia = data[2].accordingToTheTypesOfActivities;
+  dziri2_13tadi = data[0].AccordingToTheFormsOfOwnership;
+  info2_54macia = data[1].AccordingToTheFormsOfOwnership;
+  info2_55macia = data[2].AccordingToTheFormsOfOwnership;
+  info2_56macia = data[3].AccordingToTheFormsOfOwnership;
+  dziri2_14tadi = data[0].accordingToOrganizationalLegalForms;
+  info2_57macia = data[1].accordingToOrganizationalLegalForms;
+  info2_58macia = data[2].accordingToOrganizationalLegalForms;
+  info2_59macia = data[3].accordingToOrganizationalLegalForms;
+  dziritadi2_1excel = data[0].agriculture;
+  dziri2_15tadi = data[0].construction;
+  info2_60macia = data[1].construction;
+  info2_61macia = data[2].construction;
+  
 
   dziritadi2_1.innerHTML = Dziri2_1tadi;
   info2_1.innerHTML = info2_1macia;
@@ -601,6 +855,76 @@ async function updateTexts2(data) {
   info2_3.innerHTML = info2_3macia;
   info2_4.innerHTML = info2_4macia;
   info2_5.innerHTML = info2_5macia;
+  dziritadi2_3.innerHTML = dziri2_3tadi;
+  info2_6.innerHTML = info2_6macia;
+  info2_7.innerHTML = info2_7macia;
+  info2_8.innerHTML = info2_8macia;
+  info2_9.innerHTML = info2_9macia;
+  info2_10.innerHTML = info2_10macia;
+  info2_11.innerHTML = info2_11macia;
+  dziritadi2_4.innerHTML = dziri2_4tadi;
+  info2_12.innerHTML = info2_12macia;
+  info2_13.innerHTML = info2_13macia;
+  info2_14.innerHTML = info2_14macia;
+  info2_15.innerHTML = info2_15macia;
+  info2_16.innerHTML = info2_16macia;
+  info2_17.innerHTML = info2_17macia;
+  info2_18.innerHTML = info2_18macia;
+  info2_19.innerHTML = info2_19macia;
+  info2_20.innerHTML = info2_20macia;
+  info2_21.innerHTML = info2_21macia;
+  dziritadi2_5.innerHTML = dziri2_5tadi;
+  info2_22.innerHTML = info2_22macia;
+  info2_23.innerHTML = info2_23macia;
+  dziritadi2_6.innerHTML = dziri2_6tadi;
+  info2_24.innerHTML = info2_24macia;
+  info2_25.innerHTML = info2_25macia;
+  info2_26.innerHTML = info2_26macia;
+  info2_27.innerHTML = info2_27macia;
+  dziritadi2_7.innerHTML = dziri2_7tadi;
+  info2_28.innerHTML = info2_28macia;
+  info2_29.innerHTML = info2_29macia;
+  info2_30.innerHTML = info2_30macia;
+  dziritadi2_8.innerHTML = dziri2_8tadi;
+  info2_31.innerHTML = info2_31macia;
+  info2_32.innerHTML = info2_32macia;
+  info2_33.innerHTML = info2_33macia;
+  info2_34.innerHTML = info2_34macia;
+  info2_35.innerHTML = info2_35macia;
+  info2_36.innerHTML = info2_36macia;
+  dziritadi2_9.innerHTML = dziri2_9tadi;
+  info2_37.innerHTML = info2_37macia;
+  info2_38.innerHTML = info2_38macia;
+  info2_39.innerHTML = info2_39macia;
+  dziritadi2_10.innerHTML = dziri2_10tadi;
+  info2_40.innerHTML = info2_40macia;
+  info2_41.innerHTML = info2_41macia;
+  info2_42.innerHTML = info2_42macia;
+  info2_43.innerHTML = info2_43macia;
+  info2_44.innerHTML = info2_44macia;
+  info2_45.innerHTML = info2_45macia;
+  info2_46.innerHTML = info2_46macia;
+  info2_47.innerHTML = info2_47macia;
+  dziritadi2_11.innerHTML = dziri2_11tadi;
+  info2_48.innerHTML = info2_48macia;
+  info2_49.innerHTML = info2_49macia;
+  info2_50.innerHTML = info2_50macia;
+  info2_51.innerHTML = info2_51macia;
+  dziritadi2_12.innerHTML = dziri2_12tadi;
+  info2_52.innerHTML = info2_52macia;
+  info2_53.innerHTML = info2_53macia;
+  dziritadi2_13.innerHTML = dziri2_13tadi;
+  info2_54.innerHTML = info2_54macia;
+  info2_55.innerHTML = info2_55macia;
+  info2_56.innerHTML = info2_56macia;
+  dziritadi2_14.innerHTML = dziri2_14tadi;
+  info2_57.innerHTML = info2_57macia;
+  info2_58.innerHTML = info2_58macia;
+  info2_59.innerHTML = info2_59macia;
+  dziritadi_excel2_1.innerHTML = dziritadi2_1excel;
+  dziritadi2_15.innerHTML = dziri2_15tadi;
+  info2_60.innerHTML = info2_60macia;
+  info2_61.innerHTML = info2_61macia;
 }
 
 function fetchDataAndInitialize(callback) {
@@ -624,6 +948,7 @@ lang.addEventListener("click", () => {
     });
     // sidetitle.innerHTML = "Statistic";
     dziritadiMain.innerHTML = "Demography";
+    dziritadiMainMunic.innerHTML = "Demography";
   } else {
     language = "ka";
     fetchData(language, (fetchedData) => {
@@ -633,6 +958,7 @@ lang.addEventListener("click", () => {
     });
     // sidetitle.innerHTML = "სტატისტიკა";
     dziritadiMain.innerHTML = "დემოგრაფია";
+    dziritadiMainMunic.innerHTML = "დემოგრაფია";
   }
   sessionStorage.setItem("lang1", language);
   console.log(language, "language");
