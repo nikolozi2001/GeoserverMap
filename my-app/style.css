@@ -133,6 +133,7 @@ body {
 #dziritadiMain2,
 #dziritadiMainMunic,
 #dziritadiMainMunic2,
+#dziritadiMainMunic3,
 #dziritadi2_1,
 #dziritadi2_2,
 #dziritadi2_3,
@@ -180,7 +181,9 @@ body {
 #dziritadi_excel8,
 #dziritadi_excel9,
 #dziritadi_excel10,
-#dziritadi_excel2_1 {
+#dziritadi_excel2_1,
+#dziritadi_excel2_2,
+#dziritadi_excel2_3 {
     font-weight: bolder;
 }
 
@@ -318,6 +321,7 @@ body {
 #dziritadiMain:hover,
 #dziritadiMainMunic:hover,
 #dziritadiMainMunic2:hover,
+#dziritadiMainMunic3:hover,
 #dziritadiMain2:hover,
 #dziritadi2_1:hover,
 #dziritadi2_2:hover,

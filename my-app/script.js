@@ -62,7 +62,8 @@ let itemsToShow2 = {
   dziritadi2_35: "informacia35",
   dziritadi2_36: "informacia36",
   dziritadiMainMunic: "informaciaMainMunic",
-  dziritadiMainMunic2: "informaciaMainMunic2"
+  dziritadiMainMunic2: "informaciaMainMunic2",
+  dziritadiMainMunic3: "informaciaMainMunic3"
 }
 
 let elements = document.querySelectorAll(".click__item");
@@ -167,6 +168,22 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < registerShowMunic.length; i++) {
     registerShowMunic[i].addEventListener("click", () => {
       for (let j = 12; j < 15; j++) {
+        const x = document.getElementById(`dziritadi2_${j}`);
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const healthCareShowMunic = document.getElementsByClassName("healthCareShowMunic");
+  for (let i = 0; i < healthCareShowMunic.length; i++) {
+    healthCareShowMunic[i].addEventListener("click", () => {
+      for (let j = 18; j < 20; j++) {
         const x = document.getElementById(`dziritadi2_${j}`);
         if (x.style.display === "block") {
           x.style.display = "none";
@@ -765,6 +782,40 @@ let dziritadi2_1excel;
 let dziri2_15tadi;
 let info2_60macia;
 let info2_61macia;
+let dziri2_16tadi;
+let info2_62macia;
+let info2_63macia;
+let info2_64macia;
+let info2_65macia;
+let info2_66macia;
+let info2_67macia;
+let info2_68macia;
+let dziri2_17tadi;
+let info2_69macia;
+let info2_70macia;
+let info2_71macia;
+let info2_72macia;
+let dziritadi2_2excel;
+let dziritadi3MainMunic;
+let dziri2_18tadi;
+let info2_73macia;
+let info2_74macia;
+let info2_75macia;
+let info2_76macia;
+let info2_77macia;
+let info2_78macia;
+let info2_79macia;
+let info2_80macia;
+let dziri2_19tadi;
+let info2_81macia;
+let info2_82macia;
+let info2_83macia;
+let info2_84macia;
+let dziri2_20tadi;
+let info2_85macia;
+let info2_86macia;
+let dziritadi2_3excel;
+
 
 
 async function updateTexts2(data) {
@@ -846,6 +897,44 @@ async function updateTexts2(data) {
   dziri2_15tadi = data[0].construction;
   info2_60macia = data[1].construction;
   info2_61macia = data[2].construction;
+  dziri2_16tadi = data[0].trading;
+  info2_62macia = data[1].trading;
+  info2_63macia = data[2].trading;
+  info2_64macia = data[3].trading;
+  info2_65macia = data[4].trading;
+  info2_66macia = data[5].trading;
+  info2_67macia = data[6].trading;
+  info2_68macia = data[7].trading;
+  dziri2_17tadi = data[0].hotels;
+  info2_69macia = data[1].hotels;
+  info2_70macia = data[2].hotels;
+  info2_71macia = data[3].hotels;
+  info2_72macia = data[4].hotels;
+  dziritadi2_2excel = data[0].transportAndStorage;
+  dziritadi3MainMunic = data[0].healthCareAndSocialSecurity;
+  dziri2_18tadi = data[1].healthCareAndSocialSecurity;
+  info2_73macia = data[2].healthCareAndSocialSecurity;
+  info2_74macia = data[3].healthCareAndSocialSecurity;
+  info2_75macia = data[4].healthCareAndSocialSecurity;
+  info2_76macia = data[5].healthCareAndSocialSecurity;
+  info2_77macia = data[6].healthCareAndSocialSecurity;
+  info2_78macia = data[7].healthCareAndSocialSecurity;
+  info2_79macia = data[8].healthCareAndSocialSecurity;
+  info2_80macia = data[9].healthCareAndSocialSecurity;
+  dziri2_19tadi = data[10].healthCareAndSocialSecurity;
+  info2_81macia = data[11].healthCareAndSocialSecurity;
+  info2_82macia = data[12].healthCareAndSocialSecurity;
+  info2_83macia = data[13].healthCareAndSocialSecurity;
+  info2_84macia = data[14].healthCareAndSocialSecurity;
+  dziri2_20tadi = data[0].education;
+  info2_85macia = data[1].education;
+  info2_86macia = data[2].education;
+  dziritadi2_3excel = data[0].culture;
+  
+
+
+
+
   
 
   dziritadi2_1.innerHTML = Dziri2_1tadi;
@@ -925,6 +1014,43 @@ async function updateTexts2(data) {
   dziritadi2_15.innerHTML = dziri2_15tadi;
   info2_60.innerHTML = info2_60macia;
   info2_61.innerHTML = info2_61macia;
+  dziritadi2_16.innerHTML = dziri2_16tadi;
+  info2_62.innerHTML = info2_62macia;
+  info2_63.innerHTML = info2_63macia;
+  info2_64.innerHTML = info2_64macia;
+  info2_65.innerHTML = info2_65macia;
+  info2_66.innerHTML = info2_66macia;
+  info2_67.innerHTML = info2_67macia;
+  info2_68.innerHTML = info2_68macia;
+  dziritadi2_17.innerHTML = dziri2_17tadi;
+  info2_69.innerHTML = info2_69macia;
+  info2_70.innerHTML = info2_70macia;
+  info2_71.innerHTML = info2_71macia;
+  info2_72.innerHTML = info2_72macia;
+  dziritadi_excel2_2.innerHTML = dziritadi2_2excel;
+  dziritadiMainMunic3.innerHTML = dziritadi3MainMunic;
+  dziritadi2_18.innerHTML = dziri2_18tadi;
+  info2_73.innerHTML = info2_73macia;
+  info2_74.innerHTML = info2_74macia;
+  info2_75.innerHTML = info2_75macia;
+  info2_76.innerHTML = info2_76macia;
+  info2_77.innerHTML = info2_77macia;
+  info2_78.innerHTML = info2_78macia;
+  info2_79.innerHTML = info2_79macia;
+  info2_80.innerHTML = info2_80macia;
+  dziritadi2_19.innerHTML = dziri2_19tadi;
+  info2_81.innerHTML = info2_81macia;
+  info2_82.innerHTML = info2_82macia;
+  info2_83.innerHTML = info2_83macia;
+  info2_84.innerHTML = info2_84macia;
+  dziritadi2_20.innerHTML = dziri2_20tadi;
+  info2_85.innerHTML = info2_85macia;
+  info2_86.innerHTML = info2_86macia;
+  dziritadi_excel2_3.innerHTML = dziritadi2_3excel;
+
+
+
+
 }
 
 function fetchDataAndInitialize(callback) {
