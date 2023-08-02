@@ -63,8 +63,8 @@ let itemsToShow2 = {
   dziritadi2_36: "informacia36",
   dziritadiMainMunic: "informaciaMainMunic",
   dziritadiMainMunic2: "informaciaMainMunic2",
-  dziritadiMainMunic3: "informaciaMainMunic3"
-}
+  dziritadiMainMunic3: "informaciaMainMunic3",
+};
 
 let elements = document.querySelectorAll(".click__item");
 elements.forEach(function (element) {
@@ -96,7 +96,9 @@ elements.forEach(function (element) {
       }
     }
 
-    var informacia2 = document.querySelectorAll(`.${itemsToShow2[dziritadiel]}`);
+    var informacia2 = document.querySelectorAll(
+      `.${itemsToShow2[dziritadiel]}`
+    );
     if (informacia2) {
       informacia2.forEach(function (element) {
         if (element.style.display === "flex") {
@@ -164,7 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const registerShowMunic = document.getElementsByClassName("registerShowMunic");
+  const registerShowMunic =
+    document.getElementsByClassName("registerShowMunic");
   for (let i = 0; i < registerShowMunic.length; i++) {
     registerShowMunic[i].addEventListener("click", () => {
       for (let j = 12; j < 15; j++) {
@@ -180,7 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const healthCareShowMunic = document.getElementsByClassName("healthCareShowMunic");
+  const healthCareShowMunic = document.getElementsByClassName(
+    "healthCareShowMunic"
+  );
   for (let i = 0; i < healthCareShowMunic.length; i++) {
     healthCareShowMunic[i].addEventListener("click", () => {
       for (let j = 18; j < 20; j++) {
@@ -816,8 +821,6 @@ let info2_85macia;
 let info2_86macia;
 let dziritadi2_3excel;
 
-
-
 async function updateTexts2(data) {
   await data2;
   Dziri2_1tadi = data[0].basicInformation;
@@ -930,12 +933,6 @@ async function updateTexts2(data) {
   info2_85macia = data[1].education;
   info2_86macia = data[2].education;
   dziritadi2_3excel = data[0].culture;
-  
-
-
-
-
-  
 
   dziritadi2_1.innerHTML = Dziri2_1tadi;
   info2_1.innerHTML = info2_1macia;
@@ -1047,10 +1044,6 @@ async function updateTexts2(data) {
   info2_85.innerHTML = info2_85macia;
   info2_86.innerHTML = info2_86macia;
   dziritadi_excel2_3.innerHTML = dziritadi2_3excel;
-
-
-
-
 }
 
 function fetchDataAndInitialize(callback) {
@@ -1063,8 +1056,10 @@ function fetchDataAndInitialize(callback) {
 }
 
 fetchDataAndInitialize(updateTexts, updateTexts2);
+let popup = document.getElementById("popup");
 
 lang.addEventListener("click", () => {
+  popup.style.display = "none";
   if (language === "ka") {
     language = "en";
     fetchData(language, (fetchedData) => {

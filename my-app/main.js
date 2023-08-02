@@ -376,15 +376,15 @@ map.on("click", function (evt) {
         }
       });
     });
-    console.log(result);
+    // console.log(result);
 
     axios
       .get(`http://localhost:3000/getMunicipalName/?id=${result}`)
       .then((response) => {
         globalResponseName = response.data[0].Name;
         globalResponseNameEN = response.data[0].NameEN;
-        console.log(globalResponseName, "globalResponseName");
-        console.log(globalResponseNameEN, "globalResponseNameEN");
+        // console.log(globalResponseName, "globalResponseName");
+        // console.log(globalResponseNameEN, "globalResponseNameEN");
         // console.log(response.data[0]);
         const municipalDonwlaod = document.querySelectorAll(
           ".municipal_download"
@@ -577,6 +577,7 @@ map.on("click", function (evt) {
           });
         });
       });
+    let popup1 = document.getElementById("popup");
 
     if (result && result > 0) {
       axios
@@ -642,6 +643,7 @@ map.on("click", function (evt) {
             placement: "top",
             title: popoverTitle,
           });
+          popup1.style.display = "block";
           popover.show();
         })
         .catch((error) => console.log(error));
@@ -654,3 +656,7 @@ var scale = new ScaleLine({
   steps: 4,
 });
 map.addControl(scale);
+
+window.onload = function () {
+  sessionStorage.setItem("lang1", "ka");
+};
