@@ -1084,3 +1084,75 @@ lang.addEventListener("click", () => {
   sessionStorage.setItem("lang1", language);
   console.log(language, "language");
 });
+
+// Apply styles to elements with class name informacia1 to informacia18 within a media query
+const mediaQuery = window.matchMedia("(max-width: 768px)"); // Adjust the media query as needed
+
+function applyStylesToInformaciaElements() {
+  const informaciaElements = document.querySelectorAll(
+    ".informacia1, .informacia2, .informacia3, .informacia4, .informacia5, .informacia6, .informacia7, .informacia8, .informacia9, .informacia10, .informacia11, .informacia12, .informacia13, .informacia14, .informacia15, .informacia16, .informacia17, .informacia18"
+  );
+
+  informaciaElements.forEach((element) => {
+    element.style.width = "98%";
+    element.style.maxWidth = "600px"; // Optional: Set a maximum width if needed
+    element.style.margin = "0 auto"; // Optional: Center horizontally if desired
+    // Add other styles as needed
+  });
+}
+
+function handleMediaQueryChange(e) {
+  if (e.matches) {
+    applyStylesToInformaciaElements();
+  } else {
+    // Reset styles if needed when the media query no longer matches
+    const informaciaElements = document.querySelectorAll(
+      ".informacia1, .informacia2, .informacia3, .informacia4, .informacia5, .informacia6, .informacia7, .informacia8, .informacia9, .informacia10, .informacia11, .informacia12, .informacia13, .informacia14, .informacia15, .informacia16, .informacia17, .informacia18"
+    );
+
+    informaciaElements.forEach((element) => {
+      element.style.width = ""; // Reset width
+      element.style.maxWidth = ""; // Reset max width
+      element.style.margin = ""; // Reset margin
+      // Reset other styles as needed
+    });
+  }
+}
+
+mediaQuery.addListener(handleMediaQueryChange); // Attach listener to the media query
+handleMediaQueryChange(mediaQuery); // Call the function initially based on the media query state
+
+
+function applyStylesToDziritadiElements() {
+  for (let i = 1; i <= 18; i++) {
+    const dziritadiElement = document.getElementById(`dziritadi${i}`);
+    if (dziritadiElement) {
+      dziritadiElement.style.width = '150px';
+      dziritadiElement.style.maxWidth = '600px'; // Optional: Set a maximum width if needed
+      dziritadiElement.style.margin = '0 auto'; // Optional: Center horizontally if desired
+      dziritadiElement.style.fontSize = '0.5em';
+      // Add other styles as needed
+    }
+  }
+}
+
+function handleMediaQueryChangeDziritadi(o) {
+  if (o.matches) {
+    applyStylesToDziritadiElements();
+  } else {
+    // Reset styles if needed when the media query no longer matches
+    for (let i = 1; i <= 18; i++) {
+      const dziritadiElement = document.getElementById(`dziritadi${i}`);
+      if (dziritadiElement) {
+        dziritadiElement.style.width = ''; // Reset width
+        dziritadiElement.style.maxWidth = ''; // Reset max width
+        dziritadiElement.style.margin = ''; // Reset margin
+        dziritadiElement.style.fontSize = '';
+        // Reset other styles as needed
+      }
+    }
+  }
+}
+
+mediaQuery.addListener(handleMediaQueryChangeDziritadi); // Attach listener to the media query
+handleMediaQueryChangeDziritadi(mediaQuery); // Call the function initially based on the media query state

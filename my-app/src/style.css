@@ -461,4 +461,5 @@ tr.informaciaMain {
     position: absolute;
     top: 50px;
     right: 23%;
+    z-index: 10;
 }
