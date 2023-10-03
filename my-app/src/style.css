@@ -30,8 +30,6 @@ body {
 
 .popover {
     --bs-popover-max-width: 595px;
-}
-.popover {
     --bs-popover-header-bg: #1f6b75;
 }
 
