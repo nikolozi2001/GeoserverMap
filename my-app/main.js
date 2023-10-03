@@ -15,17 +15,20 @@ const layer = new TileLayer({
 });
 
 //add municipaliteties map
-var wmsURL = "http://localhost:8080/geoserver/Overlay/wms";
+// var wmsURL = "http://localhost:8080/geoserver/Overlay/wms";
+var wmsURL = "http://192.168.0.19/geoserver/overlay/wms";
 
 const wmsSource = new TileWMS({
   url: wmsURL,
-  extent: [-13884991, 2870341, -7455066, 6338219],
+  extent: [3871553.77, 4828506.42, 4850895.15, 5489731.53],
   params: {
     // 'FORMAT': format,
     VERSION: "1.1.0",
     STYLES: "",
-    LAYERS: "Overlay:munic",
+    // LAYERS: "overlay:munic",
+    LAYERS: "overlay:portal",
     TILED: true,
+    ENV: sessionStorage.getItem("lang1") === "ka" ? "RegionName:NAME_GE;MunicName:Name_GE" : "RegionName:NAME_EN;MunicName:Name_EN;" 
   },
   serverType: "geoserver",
   // Countries have transparency, so do not fade tiles:
@@ -34,22 +37,55 @@ const wmsSource = new TileWMS({
 });
 
 //regions layer
+const lang1 = sessionStorage.getItem('lang1');
+
 
 const wmsSource2 = new TileWMS({
   url: wmsURL,
-  extent: [-13884991, 2870341, -7455066, 6338219],
+  extent: [3871553.77, 4828506.42, 4850895.15, 5489731.53],
   params: {
     // 'FORMAT': format,
     VERSION: "1.1.0",
     STYLES: "",
-    LAYERS: "Overlay:georgia1",
+    LAYERS: "overlay:georgia1",
     TILED: true,
+    ENV: sessionStorage.getItem("lang1") === "ka" ? "RegionName:NAME_GE;MunicName:Name_GE" : "RegionName:NAME_EN;MunicName:Name_EN;" 
   },
   serverType: "geoserver",
   // Countries have transparency, so do not fade tiles:
   transition: 0,
   // crossOrigin: 'anonymous',
 });
+
+console.log(wmsSource2.getParams().ENV);
+
+function updateWMSParams() {
+
+  if(sessionStorage.getItem('lang1') == 'ka') {
+    sessionStorage.setItem("lang1", "en");
+  } else {
+    sessionStorage.setItem("lang1", "ka");
+  }
+  
+  console.log("lang ", sessionStorage.getItem('lang1'));
+  wmsSource2.updateParams({
+    ENV: sessionStorage.getItem('lang1') === 'ka' ? 'RegionName:NAME_GE;MunicName:Name_GE' : 'RegionName:NAME_EN;MunicName:Name_EN;dasaxName:Name_E_old'
+  });
+  wmsSource.updateParams({
+    ENV: sessionStorage.getItem("lang1") === "ka" ? "RegionName:NAME_GE;MunicName:Name_GE" : "RegionName:NAME_EN;MunicName:Name_EN;"
+  });
+}
+
+// Initial setup
+//updateWMSParams();
+
+const langBtn = document.getElementById('lang');
+langBtn.addEventListener('click', function() {
+  // Set the language in sessionStorage (replace 'ka' with your desired language)
+  updateWMSParams();
+});
+
+
 
 const wmsLayer = new TileLayer({
   source: wmsSource,
@@ -80,13 +116,15 @@ if (window.innerWidth < 900) {
   });
 } else {
   view = new View({
-    center: [44799999, 5172947],
-    zoom: 8,
+    center: [44888987, 5192947],
+    zoom: 8.2,
+    minZoom: 8.2, // Set the minimum zoom level (e.g., 5)
+    maxZoom: 12, // Set the maximum zoom level (e.g., 15)
   });
 }
 
 const map = new Map({
-  layers: [layer, wmsLayer, wmsLayer2],
+  layers: [wmsLayer, wmsLayer2],
   target: "map",
   view: view,
   controls: defaultControls().extend([
@@ -651,6 +689,13 @@ var scale = new ScaleLine({
 });
 map.addControl(scale);
 
-window.onload = function () {
-  sessionStorage.setItem("lang1", "ka");
-};
+// window.onload = function () {
+//   sessionStorage.setItem("lang1", );
+// };
+
+map.on("loadstart", function () {
+  map.getTargetElement().classList.add("spinner");
+});
+map.on("loadend", function () {
+  map.getTargetElement().classList.remove("spinner");
+});

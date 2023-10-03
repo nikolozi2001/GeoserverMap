@@ -356,13 +356,14 @@ demographchildItem2_8.addEventListener("click", () => {
   }
 });
 
-let language = "ka";
+
 const lang = document.getElementById("lang");
+//let language = lang != undefined ? lang : "ka";
 // const dziritadi1 = document.getElementById("dziritadi1");
 // const info1 = document.getElementById("info1");
 // const info2 = document.getElementById("info2");
 
-function fetchData(lang) {
+function fetchData(lang, callback) {
   // Create two separate requests
   const request1 = axios.get(
     `http://localhost:3000/regions/?lang=${lang ? lang : "ka"}`
@@ -376,15 +377,7 @@ function fetchData(lang) {
     .all([request1, request2])
     .then(
       axios.spread((response1, response2) => {
-        // Handle the responses of both requests
-        const regionsData = response1.data;
-        const municipalData = response2.data;
-
-        // Update texts and perform other actions with the data
-        updateTexts(regionsData);
-        updateTexts2(municipalData);
-
-        // ...
+        callback(response1.data, response2.data)
       })
     )
     .catch((error) => {
@@ -1047,42 +1040,61 @@ async function updateTexts2(data) {
 }
 
 function fetchDataAndInitialize(callback) {
-  fetchData("ka", (fetchedData) => {
+  fetchData(sessionStorage.getItem('lang1'), (fetchedData) => {
     data = fetchedData;
     if (typeof callback === "function") {
-      callback();
+      callback(data);
+
+      sidetitle.innerHTML = sessionStorage.getItem('lang1') === "ka" ? "სტატისტიკა" : "Statistic"
+      dziritadiMain.innerHTML = sessionStorage.getItem('lang1') === "ka" ? "დემოგრაფია" : "Demography"
+      dziritadiMainMunic.innerHTML = sessionStorage.getItem('lang1') === "ka" ? "დემოგრაფია" : "Demography"
+
     }
   });
 }
 
 fetchDataAndInitialize(updateTexts, updateTexts2);
+
 let popup = document.getElementById("popup");
 
+sidetitle.innerHTML = sessionStorage.getItem('lang1') === "ka" ? "სტატისტიკა" : "Statistic"
+
 lang.addEventListener("click", () => {
+
+  let language =  sessionStorage.getItem('lang1');
   popup.style.display = "none";
-  if (language === "ka") {
-    language = "en";
-    fetchData(language, (fetchedData) => {
-      data = fetchedData;
-      updateTexts();
-      updateTexts2();
+
+  console.log("language ", language);
+
+  if (language == "ka") {
+  
+    fetchData(language, (dataRegion, dataMunic) => {
+
+      updateTexts(dataRegion);
+      updateTexts2(dataMunic);
+
+      sidetitle.innerHTML = "სტატისტიკა";
+      dziritadiMain.innerHTML = "დემოგრაფია";
+      dziritadiMainMunic.innerHTML = "დემოგრაფია";
+
+    
     });
-    // sidetitle.innerHTML = "Statistic";
-    dziritadiMain.innerHTML = "Demography";
-    dziritadiMainMunic.innerHTML = "Demography";
+
   } else {
-    language = "ka";
-    fetchData(language, (fetchedData) => {
-      data = fetchedData;
-      updateTexts();
-      updateTexts2();
+    
+    fetchData(language, (dataRegion, dataMunic) => {
+      
+      updateTexts(dataRegion);
+      updateTexts2(dataMunic);
+
+      sidetitle.innerHTML = "Statistic";
+      dziritadiMain.innerHTML = "Demography";
+      dziritadiMainMunic.innerHTML = "Demography";
     });
-    // sidetitle.innerHTML = "სტატისტიკა";
-    dziritadiMain.innerHTML = "დემოგრაფია";
-    dziritadiMainMunic.innerHTML = "დემოგრაფია";
+
   }
-  sessionStorage.setItem("lang1", language);
-  console.log(language, "language");
+  //sessionStorage.setItem("lang1", language);
+  //console.log(language, "language");
 });
 
 // Apply styles to elements with class name informacia1 to informacia18 within a media query
