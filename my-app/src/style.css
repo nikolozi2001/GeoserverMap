@@ -23,18 +23,16 @@ body {
     line-height: 0.7;
 }
 
-/* Optional: Add hover or transition effects */
-.popover-body:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-    border-radius: 0.5rem;
-}
-
 .popover-body p:hover {
     color: rgb(197, 177, 0);
+    font-size: 15px;
 }
 
 .popover {
     --bs-popover-max-width: 595px;
+}
+.popover {
+    --bs-popover-header-bg: #1f6b75;
 }
 
 .fullscreen:-webkit-full-screen {
